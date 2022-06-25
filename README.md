@@ -3,7 +3,7 @@
 In the project directory, you can run:
 ### Npm 
 ```
-install
+npm install
 ```
 
 Or
