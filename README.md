@@ -1,10 +1,16 @@
 # Getting started with HotMeals
 
 In the project directory, you can run:
-### `npm install`
+### Npm 
+```
+install
+```
 
 Or
 
-### `yarn install
+### Yarn 
+```
+yarn install
+```
 
 to add node_modules
