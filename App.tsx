@@ -22,15 +22,15 @@ type Props = {
 };
 
 
-function HomeScreen({ navigation }: Props) {
+const HomeScreen = ({ navigation }: Props) => {
   return (
     <View style={styles.container}>
         <Text>HotSoup</Text>
         <Button
-      title="See Meals Nearby"
-      onPress={() =>
-        navigation.navigate('Map')
-      }
+          title="See Meals Nearby"
+          onPress={
+            () => navigation.navigate('Map')
+          }
     />
         <StatusBar style="auto" />
       </View>
