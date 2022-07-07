@@ -47,4 +47,6 @@ yarn install
 
 to add node_modules
 
-Then you should be able to run expo start to access a local build of the app.
+Then you should be able to run expo start to access a local build of the app on your phone.
+
+Note: To test the app with dummy data, you will have to run a local instance of the backend in another terminal window. Backend repo/instructions: https://github.com/HotSoupRepos/HotSoup-backend
