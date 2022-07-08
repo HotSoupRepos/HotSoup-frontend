@@ -2,39 +2,29 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from "react";
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 
-export default function LocationList() {
+interface Location {
+  name: string;
+  address: string;
+  phone: string;
+  lat: string;
+  long: string;
+}
 
-    const [locations, setLocations] = useState([]);
-    const [loading, setLoading] = useState(true);
+interface LocationListProps {
+  locations: Location[];
+}
+
+export default function LocationList({locations}: LocationListProps) {
     
-
-    useEffect(() => {
-
-      fetch("http://192.168.1.5:8000/locations", {
-        method: "GET",
-        headers: {
-          'Accept': "application/json",
-          "Content-Type": "application/json",
-        }})
-        .then(response => response.json())
-        .then(data =>  
-          setLocations(data["connecticut"])
-        )
-        .then(() =>
-          setLoading(false)
-        )
-
-
-    },[]);
-
-    const places = locations.map((location) =>
+    //TODO - Once ListItem component is finished, refactor this to use FlatList
+    const listItems = locations.map((location) =>
     <Text key={location["name"]}>{location["address"]}</Text>
   );
     
     return (
       <View style={styles.container}>
-        <Text>LocationList</Text>
-        <View>{loading ? <Text>Still loading...</Text> : places}</View>
+        <Text style={styles.text}>LocationList</Text>
+        {listItems}
         <StatusBar style="auto" />
       </View>
     );
@@ -47,4 +37,9 @@ export default function LocationList() {
       alignItems: 'center',
       justifyContent: 'center',
     },
+    text:
+    {
+      fontSize: 30
+    }
+    
   });

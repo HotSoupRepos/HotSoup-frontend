@@ -1,15 +1,15 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StackNavigationProp } from '@react-navigation/stack';
-import MapContainer from './pages/MapContainer';
+import Home from './screens/Home';
+import MapList from './screens/MapList';
 
 const Stack = createNativeStackNavigator();
 
 type RootStackParamList = {
   Home: undefined, // undefined because you aren't passing any params to the home screen
-  Map: undefined; 
+  MapList: undefined; 
 };
 
 type ProfileScreenNavigationProp = StackNavigationProp<
@@ -22,31 +22,20 @@ type Props = {
 };
 
 
-const HomeScreen = ({ navigation }: Props) => {
-  return (
-    <View style={styles.container}>
-        <Text>HotSoup</Text>
-        <Button
-          title="See Meals Nearby"
-          onPress={
-            () => navigation.navigate('Map')
-          }
-    />
-        <StatusBar style="auto" />
-      </View>
-  )
+const HomeScreen = () => {
+  return <Home></Home>
 }
 
-const MapContainerScreen = ({ navigation }: Props) => {
-  return <MapContainer></MapContainer>;
+const MapListScreen = () => {
+  return <MapList></MapList>;
 };
 
-export default function App({ navigation }: Props) {
+export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Map" component={MapContainerScreen} />
+        <Stack.Screen name="MapList" component={MapListScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -58,5 +47,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+   
   },
+  
 });
