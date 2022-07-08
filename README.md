@@ -1,7 +1,7 @@
 Welcome to HotSoup!
-HotSoup is a free, open source soup kitchen/food pantry location app! It is free and downloadable across both iOS and Android platforms. It helps users to find local hot soup kitchens with 1-3 clicks, by allowing the user to either search by their location or to enter an address. The goal is to help people who are food insecure find their next free, hot meal easier and faster. With accessibility and ease of use in mind, we aim to help as many folks get fed as possible easier and with comapssion. HotSOup is available as a mobile format with desktop/web coming soon!
+HotSoup is a free, open source soup kitchen/food pantry location app! It is free and downloadable across both iOS and Android platforms. It helps users to find local hot soup kitchens with 1-3 clicks, by allowing the user to either search by their location or to enter an address. The goal is to help people who are food insecure find their next free, hot meal easier and faster. With accessibility and ease of use in mind, we aim to help as many folks get fed as possible easier and with compassion. HotSoup is available as a mobile format with desktop/web coming soon!
 
-This project is current run exclusively by a wonderful crew of 100% volunteers, please take a look at our amazing Discord server where all the teams are working together to coordinate the features and deliverables - you might be amazed to see the level of work these folks are producing, especially since a lot of us are new to the software industry!!!
+This project is currently run exclusively by a wonderful crew of 100% volunteers, please take a look at our amazing Discord server where all the teams are working together to coordinate the features and deliverables - you might be amazed to see the level of work these folks are producing, especially since a lot of us are new to the software industry!!!
 
 https://discord.gg/3H9CFN3Wqd
 
@@ -35,6 +35,14 @@ You will need to install Node to run this app: https://nodejs.org/en/
 We are using Yarn as the package/dependency manager: https://yarnpkg.com/
 
 To install Yarn:
+
+if you have Homebrew:
+
+```
+brew install yarn
+```
+otherwise
+
 ```
 npm install --global yarn
 

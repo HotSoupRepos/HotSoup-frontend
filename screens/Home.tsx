@@ -37,3 +37,4 @@ const styles = StyleSheet.create({
         fontSize: 40
     },
   });
+  

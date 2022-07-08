@@ -43,3 +43,4 @@ export default function LocationList({locations}: LocationListProps) {
     }
     
   });
+  
