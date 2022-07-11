@@ -41,6 +41,7 @@ if you have Homebrew:
 ```
 brew install yarn
 ```
+
 otherwise
 
 ```
@@ -56,6 +57,6 @@ yarn install
 
 to add node_modules
 
-Then you should be able to run ``` expo start ``` to access a local build of the app on your phone.
+Then you should be able to run `expo start` to access a local build of the app on your phone. If the expo command is unavailable, try running `yarn global add expo-cli`
 
 Note: To test the app with dummy data, you will have to run a local instance of the backend in another terminal window. Backend repo/instructions: https://github.com/HotSoupRepos/HotSoup-backend
