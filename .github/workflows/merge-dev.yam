@@ -1,0 +1,17 @@
+NEEDS TO BE FINISHED
+
+on:
+  pull_request:
+    branches:
+      - dev
+jobs:
+    merge_check:
+    runs-on: ubuntu-latest
+    steps:
+      -  name: Check if the pull request is mergeable to master
+          run: |
+          // need to find syntax for "contains"
+               if [[ "$GITHUB_HEAD_REF" contains 'HS-' ]]; then exit 0; else exit 1; fi;
+
+
+
