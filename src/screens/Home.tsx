@@ -12,7 +12,14 @@ export default function Home() {
 
     return (
         <View style={styles.container}>
+            <Pressable
+                style={{
+                    backgroundColor: "purple",
+                    zIndex: 0.5
+                }}
+                onPress={() => navigation.navigate('MapList')}>
             <Text style={styles.text}>HotSoup</Text>
+            </Pressable>
             <Pressable
                 style={{
                     backgroundColor: "green",
