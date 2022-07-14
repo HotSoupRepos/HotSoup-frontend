@@ -17,7 +17,7 @@ export default function Home() {
                     backgroundColor: "purple",
                     zIndex: 0.5
                 }}
-                onPress={() => navigation.navigate('MapList')}>
+                onPress={() => navigation.navigate('AboutPage')}>
             <Text style={styles.text}>HotSoup</Text>
             </Pressable>
             <Pressable
