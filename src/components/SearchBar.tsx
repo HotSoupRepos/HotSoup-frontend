@@ -10,62 +10,64 @@ interface SearchBarProps {
 
 function SearchBar ({ searchText, onSearchChange, onSearchSubmit}: SearchBarProps) {
   return (
-    <View style={styles.backgroundStyle}>
-        <Feather name="search" style={styles.iconStyle} />
+    <View style={styles.searchContainer}>
+      <View style={styles.searchBox}>
+        <Feather name="search" style={styles.icon} />
+      
         <TextInput
             autoCapitalize="none"
             autoCorrect={false}
             placeholder="Search Zip Code/Address"
-            style={styles.inputStyle}
+            style={styles.input}
             value={searchText}
             onChangeText={onSearchChange}
         />
-      
+      </View>
+      <View style={styles.btnContainer}> 
         <Pressable
-            onPress={onSearchSubmit}
-            style={styles.buttonStyle}
-        >
-            <Text style={styles.text}>Search</Text>
-        </Pressable>
+              onPress={onSearchSubmit}
+          >
+              <Text style={styles.text}>Search</Text>
+          </Pressable>
+      </View>
+        
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  backgroundStyle: {
+  searchContainer: {
+    width: 300,
+  },
+  searchBox: {
     marginTop: 16,
-    backgroundColor: "#F0EEEE",
-    height: 50,
+    backgroundColor: "rgba(255,255,255, 0.3)",
+    height: 60,
     borderRadius: 5,
-    marginHorizontal: 15,
-    flexDirection: "column",
+    flexDirection: "row",
     marginBottom: 10,
   },
-  inputStyle: {
-    flex: 1,
-    fontSize: 18,
+  input: {
+    fontSize: 20,
   },
-  iconStyle: {
-    fontSize: 35,
-    marginHorizontal: 15,
+  icon: {
+    fontSize: 30,
     alignSelf: 'center',
     color: 'white',
     padding: 15
   },
-  buttonStyle: {
+  btnContainer: {
     marginTop: 20,
-    paddingVertical: 8,
-    borderWidth: 4,
-    borderColor: "#e8e11a",
-    borderRadius: 6,
+    paddingVertical: 10,
+    borderWidth: 5,
+    borderColor: "#ffc40c",
+    borderRadius: 8,
     backgroundColor: "transparent",
-    padding: 15,
-    height: 50
-
+    height: 60
   },
   text: {
-    fontSize: 20,
-    fontWeight: "bold",
+    fontSize: 25,
+    fontWeight: 'bold',
     textAlign: "center",
     color: "#F0EEEE",
     }

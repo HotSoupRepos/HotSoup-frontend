@@ -16,15 +16,13 @@ export default function Home() {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>HotSoup</Text>
+            <Text style={styles.title}>HotSoup</Text>
             <Pressable
-                style={{
-                    backgroundColor: "green",
-                    zIndex: 0.5
-                }}
+                style={styles.btnContainer}
                 onPress={() => navigation.navigate('MapList')}>
-                <Text style={styles.text}>See Meals Nearby</Text>
+                <Text style={styles.btnText}>See Meals Nearby</Text>
             </Pressable>
+            <Text style={styles.text}>or</Text>
             <SearchBar searchText={searchText} onSearchChange={newSearchText => setSearchText(newSearchText)} onSearchSubmit={() => alert(searchText)} />
             <StatusBar style="auto" />
           </View>
@@ -34,12 +32,32 @@ export default function Home() {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: 'black',
+      backgroundColor: 'rgba(0,0,0, 0.3)',
       alignItems: 'center',
       justifyContent: 'center',
     },
-    text: {
-        fontSize: 40
+    title: {
+      fontSize: 50,
+      fontWeight: "bold",
+      textAlign: "center",
+      color: "#ffc40c",
     },
+    btnContainer: {
+      width: 300,
+      marginTop: 30,
+      paddingVertical: 20,
+      borderRadius: 8,
+      backgroundColor: "#ffc40c",
+    },
+    btnText: {
+      fontSize: 30,
+      fontWeight: "bold",
+      textAlign: "center",
+      color: "black",
+    },
+    text: {
+      padding: 50,
+      fontSize: 20
+    }
   });
   

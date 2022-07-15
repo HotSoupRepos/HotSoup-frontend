@@ -7,7 +7,7 @@ export default function MapList() {
   const [locations, setLocations] = useState([]);
 
   useEffect(() => {
-    fetch("http://192.168.1.5:8000/locations", {
+    fetch("http://192.168.1.2:8000/locations", {
       method: "GET",
       headers: {
         Accept: "application/json",
