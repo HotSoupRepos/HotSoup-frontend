@@ -15,7 +15,8 @@ export default function MapList() {
       },
     })
       .then((response) => response.json())
-      .then((data) => setLocations(data["connecticut"]));
+      .then((data) => setLocations(data["connecticut"]))
+      .catch((err) => console.log(err));
   }, []);
 
   return (
