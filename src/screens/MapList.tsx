@@ -1,13 +1,16 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import LocationList from "../components/LocationList";
+import { LocationList } from "@components";
 
 export default function MapList() {
   const [locations, setLocations] = useState([]);
 
+  // This address is unique to your computer, please modify ipAddress accordingly. Instructions are in README.
+  const ipAddress = "192.168.1.5";
+
   useEffect(() => {
-    fetch("http://192.168.1.5:8000/locations", {
+    fetch(`http://${ipAddress}:8000/locations`, {
       method: "GET",
       headers: {
         Accept: "application/json",
