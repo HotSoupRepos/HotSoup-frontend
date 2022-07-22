@@ -1,5 +1,5 @@
 node_modules/
-.expo/
+*.expo/
 dist/
 npm-debug.*
 *.jks
@@ -9,6 +9,7 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
+*.npm-global
 
 # macOS
 .DS_Store
