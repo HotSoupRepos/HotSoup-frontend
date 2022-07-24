@@ -79,20 +79,16 @@ const Tabs = ({ navigation, route }) => {
     <Tab.Navigator
       screenOptions={({ route }) => ({
         headerShown: false,
-        tabBarStyle: { backgroundColor: "black" },
+        tabBarStyle: { backgroundColor: "#000000" },
         tabBarIcon: ({ color, size }) => {
-          let iconName;
-
+  
           if (route.name === "Home") {
-            iconName = "home";
+            return <Ionicons name='home' size={size} color={color} />;
           } else if (route.name === "Map") {
-            iconName = "map";
+            return <Ionicons name='map' size={size} color={color} />;
           } else if (route.name === "About Us") {
-            iconName = "information-circle-outline";
-          }
-
-          // You can return any component that you like here!
-          return <Ionicons name={iconName} size={size} color={color} />;
+            return <Ionicons name='information-circle-outline' size={size} color={color} />;
+          }      
         },
         tabBarActiveTintColor: "#ffc529",
         tabBarInactiveTintColor: "#ffffff",
