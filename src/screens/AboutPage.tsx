@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function AboutPage() {
   return (
     <View style={styles.container}>
-      <View style={styles.textBlock}>
+      <View style={styles.textContainer}>
         <Text style={styles.header}> About HotSoup</Text>
         <Text style={styles.text}>
           HotSoup is an OpenSource project started by Robin Weitzman. It 
@@ -35,9 +35,10 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 24,
     alignItems: "center",
-    backgroundColor: "#fcb36a"
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0,0,0, 0.3)'
   },
-  textBlock: {
+  textContainer: {
     borderRadius: 25,
     padding: 10,
     alignItems: "center",
@@ -47,10 +48,11 @@ const styles = StyleSheet.create({
   text: {
     color: "#FFF",
     fontSize: 28,
-    fontWeight: "bold"
+    fontWeight: "bold",
+    textAlign: "center",
   },
   header: {
-    color: "#fff",
+    color: "#ffc40c",
     fontSize: 42,
     marginBottom: 36
   }
