@@ -1,5 +1,5 @@
 import Home from "./Home";
 import MapList from "./MapList";
-import AboutPage from "./AboutPage";
+import Info from "./Info";
 
-export { Home, MapList, AboutPage };
+export { Home, MapList, Info };
