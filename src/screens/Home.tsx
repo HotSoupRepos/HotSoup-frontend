@@ -18,7 +18,7 @@ export default function Home() {
         <View style={styles.container}>
             <Pressable
                 onPress={() => navigation.navigate('AboutPage')}>
-            <Text style={styles.title}>HotSoup</Text>
+                <Text style={styles.title}>HotSoup</Text>
             </Pressable>
             <Pressable
                 style={styles.btnContainer}
