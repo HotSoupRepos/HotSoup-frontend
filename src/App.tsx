@@ -11,7 +11,7 @@ import {
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import { registerRootComponent } from "expo";
-import { Home, MapList } from "@screens";
+import { Home, MapList, Info } from "@screens";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -38,21 +38,9 @@ const MapListScreen = () => {
   return <MapList></MapList>;
 };
 
-//Created dummy About Us screen to test all three tabs
-const AboutUsScreen = () => {
-  return (
-    <View
-      style={{
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-        backgroundColor: "#ffffff",
-      }}
-    >
-      <Text style={{ fontSize: 30 }}>About Us</Text>
-    </View>
-  );
-};
+const InfoScreen = () => {
+  return <Info></Info>
+}
 
 // If the focused route is not found, we need to assume it's the initial screen
 // This can happen during if there hasn't been any navigation inside the screen
@@ -65,8 +53,8 @@ const getHeaderTitle = (route) => {
       return "Home";
     case "Map":
       return "MapList";
-    case "About Us":
-      return "About Us";
+    case "Info":
+      return "Info";
   }
 };
 
@@ -86,7 +74,7 @@ const Tabs = ({ navigation, route }) => {
             return <Ionicons name='home' size={size} color={color} />;
           } else if (route.name === "Map") {
             return <Ionicons name='map' size={size} color={color} />;
-          } else if (route.name === "About Us") {
+          } else if (route.name === "Info") {
             return <Ionicons name='information-circle-outline' size={size} color={color} />;
           }      
         },
@@ -96,7 +84,7 @@ const Tabs = ({ navigation, route }) => {
     >
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Map" component={MapListScreen} />
-      <Tab.Screen name="About Us" component={AboutUsScreen} />
+      <Tab.Screen name="Info" component={InfoScreen} />
     </Tab.Navigator>
   );
 };
@@ -107,7 +95,7 @@ const App = () => {
       <Stack.Navigator initialRouteName="Tabs"> 
         <Stack.Screen name="Home" component={HomeScreen} /> 
         <Stack.Screen name="MapList" component={MapListScreen} /> 
-        <Stack.Screen name="About Us" component={AboutUsScreen} /> 
+        <Stack.Screen name="Info" component={InfoScreen} /> 
         <Stack.Screen name="Tabs" component={Tabs} /> 
       </Stack.Navigator> 
     </NavigationContainer>

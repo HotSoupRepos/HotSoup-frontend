@@ -16,7 +16,10 @@ export default function Home() {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>HotSoup</Text>
+            <Pressable
+                onPress={() => navigation.navigate('Info')}>
+                <Text style={styles.title}>HotSoup</Text>
+            </Pressable>
             <Pressable
                 style={styles.btnContainer}
                 onPress={() => navigation.navigate('MapList')}>
