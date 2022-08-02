@@ -8,7 +8,7 @@ import {
  function BackButton() {
     return (
         <View>
-            <Image source={require('../assets/previous.png')} />
+            <Image source={require('../icons/previous.png')} />
         </View>
     );
  };

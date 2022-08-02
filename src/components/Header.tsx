@@ -3,11 +3,20 @@ import {
     View,
     Text,
     Image,
+    Pressable,
  } from "react-native";
  import BackButton from "./BackButton";
  import SearchBar from "./SearchBar";
 
-function Header() {
+ interface RegionProps {
+    latitude: number;
+    longitude: number;
+    moveRegion: (latitude: number, longitude: number) => any;
+ }
+
+const Header: React.FC<RegionProps> = ({latitude, longitude, moveRegion}) => {
+
+
     return (
         <View style={styles.headerContainer}>
             <View style={styles.headerTopContainer}>
@@ -21,12 +30,18 @@ function Header() {
             <View style={styles.headerBottomContainer}>
                 <View style={styles.searchContainer}>
                 {/* <View style={styles.greySearchContainer}> */}
-                <Image style={styles.greySearchImage} source={require('../assets/search-grey2.png')} />
+                <Image style={styles.greySearchImage} source={require('../icons/search-grey2.png')} />
                 {/* </View> */}
-                <SearchBar />
+                <SearchBar latitude={latitude} longitude={longitude} moveRegion={moveRegion} />
                 </View>
-                <Image style={styles.searchImage} source={require('../assets/search.png')} />
-                <Image style={styles.targetImage} source={require('../assets/target.png')} />
+                {/* <Pressable> */}
+                <View>
+                <Image style={styles.searchImage} source={require('../icons/search.png')} />
+                </View>
+                <View>
+                {/* </Pressable> */}
+                <Image style={styles.targetImage} source={require('../icons/target.png')} />
+                </View>
             </View>
 
         </View>
@@ -46,7 +61,7 @@ const styles = StyleSheet.create({
     headerContainer: {
         // alignItems: 'center',
         paddingVertical: 18,
-        paddingHorizontal: 18,
+        paddingHorizontal: 8,
         flexDirection: 'column',
 
     },
@@ -71,27 +86,35 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
 
     },
+    yellowSearchIcon: {
+
+    },
     searchImage: {
         borderRadius: 8,
-        marginHorizontal: 8,
-        paddingVertical: 20,
-
-        flex: 0.5,
+        marginHorizontal: 7,
+        paddingVertical: 18,
+        height: 45,
+        width: 42,
+        // paddingHorizontal: 10,
+        // flex: 0.5,
     },
     greySearchContainer: {
         backgroundColor: '#040404',
-        paddingVertical: 5,
+        paddingVertical: 4,
     },
     greySearchImage: {
-        padding: 25,
+        padding: 24.5,
 
     },
+
     targetImage: {
         borderWidth: 2,
         borderColor: '#FEB74C',
         borderRadius: 8,
         paddingVertical: 18,
-        flex: 0.5,
-    }
+        height: 45,
+        width: 42,
+        // flex: 0.5,
+    },
 
 })
