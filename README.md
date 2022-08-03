@@ -64,7 +64,7 @@ Then you should be able to run `expo start` to access a local build of the app o
 
 Note: To test the app with dummy data, you will have to run a local instance of the backend in another terminal window. Backend repo/instructions: https://github.com/HotSoupRepos/HotSoup-backend
 
-You can find the api request url at src/service/soupKitchenServce.ts. There is a hardcoded url including a unique IP address stored in a variable. You will have to change it to your own computer's IPv4 address to make requests to the running backend. You CANNOT use localhost, since the app is running on your phone/simulator.
+You can find the api request url at src/service/soupKitchenService.ts. There is a hardcoded url including a unique IP address stored in a variable. You will have to change it to your own computer's IPv4 address to make requests to the running backend. You CANNOT use localhost, since the app is running on your phone/simulator.
 
 You can find your IP address by following instructions here: https://www.avg.com/en/signal/find-ip-address
 
