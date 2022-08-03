@@ -11,8 +11,9 @@
       "@components": ["components"],
       "@containers": ["containers"],
       "@screens": ["screens"],
-      "@redux": ["redux"],
-      "@apis": ["apis"]
+      "@store": ["store"],
+      "@apis": ["apis"],
+      "@service": ["service"],
     }
   }
 }
