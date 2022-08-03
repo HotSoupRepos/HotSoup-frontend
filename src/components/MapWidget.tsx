@@ -1,4 +1,4 @@
-// import { useState } from "react";
+
 import {
     View,
     StyleSheet,
@@ -8,7 +8,7 @@ import {
 } from "react-native"
 
 import MapView, { Marker, Callout } from "react-native-maps";
-// import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
+
 
 interface Location {
   name: string;
@@ -23,18 +23,20 @@ interface LocationListProps {
 }
 
 
-// const MapWidget: React.FC<LocationListProps> = ({locations}) => {
-  function MapWidget({locations}: LocationListProps) {
+const MapWidget: React.FC<LocationListProps> = ({locations}) => {
 
-    const markers = locations.map((location) => {
+    const markers = locations.map((location, index) => {
       return (
-        
         <Marker 
+        key={index}
         coordinate={{ latitude: parseInt(location['lat']), longitude: parseInt(location['long']) }}
-        
+        draggable={true}
         >
         <Callout>
-          <Text> Current Location </Text>
+          <Text> {location['address']} </Text>
+          <Text> {location['phone']}  </Text>
+          <Text> {location['lat']}  </Text>
+          <Text> {location['long']}  </Text>
         </Callout>
         </Marker>
       )
@@ -45,31 +47,15 @@ interface LocationListProps {
         <View style={styles.mapContainer}>
             <MapView style={styles.map}
                 initialRegion={{
-                  latitude: 37.78825,
-                  longitude: 	-122.4324,
-                  latitudeDelta: 0.0922,
+                  latitude: 40.7128,
+                  longitude: 	-74.0060,
+                  latitudeDelta: 2,
                   longitudeDelta: 0.0421,
-                }}
+                }}   
                 provider="google"
             >
 
-            <Marker 
-              coordinate={ { latitude: 37.78825, longitude: -122.4324 }} 
-              // draggable={true}
-              // onDragStart={(e) => {
-              //   console.log("Drag start", e.nativeEvent.coordinate);
-              // }}
-              // onDragEnd={(e) => movePin(e.nativeEvent.coordinate.latitude, e.nativeEvent.coordinate.longitude) }
-            >
-              <Callout>
-                <Text> Current Location </Text>
-              </Callout>
-            </Marker>
-
             {markers}
-
-
-
 
             </MapView>
         </View>
