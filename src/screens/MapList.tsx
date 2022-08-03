@@ -1,13 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { LocationList } from "@components";
+import { LocationList, MapWidget } from "@components";
 
 export default function MapList() {
   const [locations, setLocations] = useState([]);
 
   // This address is unique to your computer, please modify ipAddress accordingly. Instructions are in README.
-  const ipAddress = "192.168.1.5";
+  const ipAddress = "192.168.1.84";
 
   useEffect(() => {
     fetch(`http://${ipAddress}:8000/locations`, {
@@ -23,6 +23,8 @@ export default function MapList() {
 
   return (
     <View style={styles.container}>
+
+      <MapWidget locations={locations} />
       <LocationList locations={locations}></LocationList>
       <StatusBar style="auto" />
     </View>
