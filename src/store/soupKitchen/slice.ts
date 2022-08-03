@@ -28,7 +28,7 @@ export const getLocationsAsync = createAsyncThunk(
   async () => new SoupKitchenService(new Api()).getLocations()
 );
 
-export const soupKitchenSlice = createSlice({
+const soupKitchenSlice = createSlice({
   name: "soupKitchen",
   initialState,
   reducers: {},
