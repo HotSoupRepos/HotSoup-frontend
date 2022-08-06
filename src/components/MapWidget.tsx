@@ -4,8 +4,8 @@ import {
   StyleSheet,
   Dimensions,
   Text,
-  Button,
 } from "react-native"
+
 
 import MapView, { Marker, Callout } from "react-native-maps";
 
@@ -44,8 +44,6 @@ const MapWidget: React.FC<LocationListProps> = ({ locations }) => {
             <Callout>
               <Text> {location['address']} </Text>
               <Text> {location['phone']}  </Text>
-              <Text> {location['lat']}  </Text>
-              <Text> {location['long']}  </Text>
             </Callout>
           </Marker>
         ))}
@@ -61,12 +59,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    height: 300,
-    // flex: 1,
-    // marginTop: 250,
+    height: '35%',
   },
   map: {
-    width: 400,
-    height: 300,
+    width: Dimensions.get('window').width,
+    height: '100%',
   },
 });
