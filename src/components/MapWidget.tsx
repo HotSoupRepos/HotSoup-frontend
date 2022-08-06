@@ -39,7 +39,6 @@ const MapWidget: React.FC<LocationListProps> = ({ locations }) => {
           <Marker
             key={index}
             coordinate={{ latitude: parseFloat(location['lat']), longitude: parseFloat(location['long']) }}
-            draggable={true}
           >
             <Callout>
               <Text> {location['address']} </Text>
