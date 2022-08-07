@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { LocationList } from "@components";
 
 export default function MapList() {
@@ -18,7 +18,8 @@ export default function MapList() {
       },
     })
       .then((response) => response.json())
-      .then((data) => setLocations(data["connecticut"]));
+      .then((data) => setLocations(data["connecticut"]))
+      .catch((err) => console.log("request failred!", err));
   }, []);
 
   return (
