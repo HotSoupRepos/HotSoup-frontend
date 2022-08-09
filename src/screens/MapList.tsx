@@ -1,29 +1,36 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React, { useCallback } from "react";
+import { StyleSheet, View, ActivityIndicator, Text } from "react-native";
+import { useFocusEffect } from "@react-navigation/native";
 import { LocationList } from "@components";
+import {
+  useAppDispatch,
+  getLocationsAsync,
+  useAppSelector,
+  selectLocations,
+} from "@store";
 
 export default function MapList() {
-  const [locations, setLocations] = useState([]);
+  const dispatch = useAppDispatch();
+  const { loading, locations, error } = useAppSelector(selectLocations);
 
-  // This address is unique to your computer, please modify ipAddress accordingly. Instructions are in README.
-  const ipAddress = "192.168.1.5";
+  useFocusEffect(
+    useCallback(() => {
+      dispatch(getLocationsAsync());
+    }, [dispatch, getLocationsAsync])
+  );
 
-  useEffect(() => {
-    fetch(`http://${ipAddress}:8000/locations`, {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => setLocations(data["connecticut"]));
-  }, []);
+  if (loading)
+    return (
+      <View style={styles.container}>
+        <ActivityIndicator size={50} animating />
+      </View>
+    );
 
   return (
     <View style={styles.container}>
-      <LocationList locations={locations}></LocationList>
+      {error && <Text>{error}</Text>}
+      {!error && <LocationList locations={locations}></LocationList>}
       <StatusBar style="auto" />
     </View>
   );
