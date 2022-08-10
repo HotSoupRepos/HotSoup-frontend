@@ -8,13 +8,14 @@ module.exports = function (api) {
         {
           root: ["./src/"],
           alias: {
-            "@redux": "./src/redux",
+            "@store": "./src/store",
             "@common": "./src/common",
             "@config": "./src/config",
             "@apis": "./src/apis",
             "@containers": "./src/containers",
             "@screens": "./src/screens",
             "@components": "./src/components",
+            "@service": "./src/service",
           },
         },
       ],
