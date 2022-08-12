@@ -100,6 +100,7 @@ const Tabs = ({ navigation, route }) => {
 };
 
 const App = () => {
+  //custom theme is recognized here//
   return (
     <Provider store={store}>
       <PaperProvider theme={theme}>

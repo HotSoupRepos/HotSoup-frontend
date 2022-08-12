@@ -1,18 +1,9 @@
-import type CustomThemeColors from "./theme";
+import { CustomTheme } from "./theme";
 
 declare global {
   namespace ReactNativePaper {
-    interface CustomTheme {
-      primary: string;
-      secondary: string;
-      text: {
-        primary: string;
-        secondary: string;
-      };
-      background: {
-        primary: string;
-        secondary: string;
-      };
+    interface Theme {
+      customTheme: CustomTheme;
     }
   }
 }

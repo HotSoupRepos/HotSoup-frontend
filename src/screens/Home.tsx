@@ -20,6 +20,7 @@ export default function Home() {
 
   const theme = useTheme();
 
+  // custom theme is not recognized here, but manually typing it does work
   console.log(theme);
 
   return (
