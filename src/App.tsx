@@ -101,7 +101,7 @@ const Tabs = ({ navigation, route }) => {
 const App = () => {
   return (
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
+      <PersistGate persistor={persistor}>
         <NavigationContainer>
           <Stack.Navigator initialRouteName="Tabs">
             <Stack.Screen name="Home" component={HomeScreen} />
