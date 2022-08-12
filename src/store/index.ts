@@ -1,12 +1,12 @@
 import {
   selectLocations,
   getLocationsAsync,
-  SoupKitchenModel,
+  type SoupKitchenModel,
 } from "./soupKitchen/slice";
 import {
   store,
   persistor,
-  RootState,
+  type RootState,
   useAppDispatch,
   useAppSelector,
 } from "./store";
