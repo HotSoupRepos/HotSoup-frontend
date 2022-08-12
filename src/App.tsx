@@ -10,10 +10,12 @@ import {
 } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
+import { Provider as PaperProvider } from "react-native-paper";
 import { registerRootComponent } from "expo";
 import { Home, MapList, Info } from "@screens";
 import { Provider } from "react-redux";
 import { store } from "@store";
+import { theme } from "@theme";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -100,14 +102,16 @@ const Tabs = ({ navigation, route }) => {
 const App = () => {
   return (
     <Provider store={store}>
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="Tabs">
-          <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="MapList" component={MapListScreen} />
-          <Stack.Screen name="Info" component={InfoScreen} />
-          <Stack.Screen name="Tabs" component={Tabs} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <PaperProvider theme={theme}>
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="Tabs">
+            <Stack.Screen name="Home" component={HomeScreen} />
+            <Stack.Screen name="MapList" component={MapListScreen} />
+            <Stack.Screen name="Info" component={InfoScreen} />
+            <Stack.Screen name="Tabs" component={Tabs} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </PaperProvider>
     </Provider>
   );
 };

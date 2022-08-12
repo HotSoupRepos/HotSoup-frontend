@@ -2,7 +2,7 @@ import { Api } from "@apis";
 import { SoupKitchenModel } from "@store";
 
 // This address is unique to your computer, please modify ipAddress accordingly. Instructions are in README.
-const url = "https://dbcb-108-35-125-10.ngrok.io";
+const url = "https://2205-108-50-197-203.ngrok.io";
 
 interface ISoupKitchenService {
   getLocations(): Promise<SoupKitchenModel[]>;
