@@ -3,7 +3,7 @@ import renderer from "react-test-renderer";
 import { LocationList } from "@components";
 
 describe("Testing : <LocationList />", () => {
-  const mockLocation1 = [
+  const mockLocations = [
     {
       name: "The Great Pyramid of Giza",
       address: "main street",
@@ -19,7 +19,7 @@ describe("Testing : <LocationList />", () => {
       long: "10.3966",
     },
   ];
-  const mockLocation2 = [
+  const mockLocation = [
     {
       name: "Leaning Tower of Pisa",
       address: "main street",
@@ -29,16 +29,16 @@ describe("Testing : <LocationList />", () => {
     },
   ];
 
-  it("has 3 child when locations.length === 2", () => {
+  it("has 3 child when locations.length === 1", () => {
     const tree = renderer
-      .create(<LocationList locations={mockLocation1} />)
-      .toJSON();
-    expect(tree.children.length).toBe(3);
-  });
-  it("has 2 children when locations.length === 1", () => {
-    const tree = renderer
-      .create(<LocationList locations={mockLocation2} />)
+      .create(<LocationList locations={mockLocation} />)
       .toJSON();
     expect(tree.children.length).toBe(2);
+  });
+  it("has 2 children when locations.length === 2", () => {
+    const tree = renderer
+      .create(<LocationList locations={mockLocations} />)
+      .toJSON();
+    expect(tree.children.length).toBe(3);
   });
 });
