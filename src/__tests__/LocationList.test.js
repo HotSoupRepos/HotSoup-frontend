@@ -29,13 +29,13 @@ describe("Testing : <LocationList />", () => {
     },
   ];
 
-  it("has 3 child when locations.length === 1", () => {
+  it("has 2 child when locations.length === 1", () => {
     const tree = renderer
       .create(<LocationList locations={mockLocation} />)
       .toJSON();
     expect(tree.children.length).toBe(2);
   });
-  it("has 2 children when locations.length === 2", () => {
+  it("has 3 children when locations.length === 2", () => {
     const tree = renderer
       .create(<LocationList locations={mockLocations} />)
       .toJSON();
