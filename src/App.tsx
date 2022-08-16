@@ -14,7 +14,8 @@ import { Ionicons } from "@expo/vector-icons";
 import { registerRootComponent } from "expo";
 import { Home, MapList, Info } from "@screens";
 import { Provider } from "react-redux";
-import { store } from "@store";
+import { store, persistor } from "@store";
+import { PersistGate } from "redux-persist/integration/react";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -101,14 +102,16 @@ const Tabs = ({ navigation, route }) => {
 const App = () => {
   return (
     <Provider store={store}>
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="Tabs">
-          <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="MapList" component={MapListScreen} />
-          <Stack.Screen name="Info" component={InfoScreen} />
-          <Stack.Screen name="Tabs" component={Tabs} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <PersistGate persistor={persistor}>
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="Tabs">
+            <Stack.Screen name="Home" component={HomeScreen} />
+            <Stack.Screen name="MapList" component={MapListScreen} />
+            <Stack.Screen name="Info" component={InfoScreen} />
+            <Stack.Screen name="Tabs" component={Tabs} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </PersistGate>
     </Provider>
   );
 };
