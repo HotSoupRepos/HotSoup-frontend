@@ -55,9 +55,6 @@ export default MapWidget;
 
 const styles = StyleSheet.create({
   mapContainer: {
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
     height: '35%',
   },
   map: {
