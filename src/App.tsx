@@ -1,5 +1,6 @@
 import React from "react";
-import { Text, View} from "react-native";
+import 'react-native-gesture-handler';
+import { Text, View } from "react-native";
 import {
   NavigationContainer,
   getFocusedRouteNameFromRoute,
@@ -12,6 +13,9 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import { registerRootComponent } from "expo";
 import { Home, MapList, Info } from "@screens";
+import { Provider } from "react-redux";
+import { store, persistor } from "@store";
+import { PersistGate } from "redux-persist/integration/react";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -40,8 +44,8 @@ const MapListScreen = () => {
 };
 
 const InfoScreen = () => {
-  return <Info></Info>
-}
+  return <Info></Info>;
+};
 
 // If the focused route is not found, we need to assume it's the initial screen
 // This can happen during if there hasn't been any navigation inside the screen
@@ -70,14 +74,19 @@ const Tabs = ({ navigation, route }) => {
         headerShown: false,
         tabBarStyle: { backgroundColor: "#000000" },
         tabBarIcon: ({ color, size }) => {
-  
           if (route.name === "Home") {
-            return <Ionicons name='home' size={size} color={color} />;
+            return <Ionicons name="home" size={size} color={color} />;
           } else if (route.name === "Map") {
-            return <Ionicons name='map' size={size} color={color} />;
+            return <Ionicons name="map" size={size} color={color} />;
           } else if (route.name === "Info") {
-            return <Ionicons name='information-circle-outline' size={size} color={color} />;
-          }      
+            return (
+              <Ionicons
+                name="information-circle-outline"
+                size={size}
+                color={color}
+              />
+            );
+          }
         },
         tabBarActiveTintColor: "#ffc529",
         tabBarInactiveTintColor: "#ffffff",
@@ -92,19 +101,19 @@ const Tabs = ({ navigation, route }) => {
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Tabs"> 
-        <Stack.Screen name="Home" component={HomeScreen} /> 
-        <Stack.Screen name="MapList" component={MapListScreen} /> 
-        <Stack.Screen name="Info" component={InfoScreen} /> 
-        <Stack.Screen name="Tabs" component={Tabs} /> 
-      </Stack.Navigator> 
-    </NavigationContainer>
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="Tabs">
+            <Stack.Screen name="Home" component={HomeScreen} />
+            <Stack.Screen name="MapList" component={MapListScreen} />
+            <Stack.Screen name="Info" component={InfoScreen} />
+            <Stack.Screen name="Tabs" component={Tabs} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </PersistGate>
+    </Provider>
   );
 };
 
 export default registerRootComponent(App);
-
-
-
-  

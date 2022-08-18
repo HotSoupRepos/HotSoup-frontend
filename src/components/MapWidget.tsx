@@ -1,11 +1,9 @@
-
 import {
   View,
   StyleSheet,
   Dimensions,
   Text,
 } from "react-native"
-
 
 import MapView, { Marker, Callout } from "react-native-maps";
 

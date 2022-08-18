@@ -64,7 +64,7 @@ Then you should be able to run `expo start` to access a local build of the app o
 
 Note: To test the app with dummy data, you will have to run a local instance of the backend in another terminal window. Backend repo/instructions: https://github.com/HotSoupRepos/HotSoup-backend
 
-In the MapList screen component, there is a hardcoded IP address, you will have to change it to your own computer's IPv4 address to make requests to the running backend. You CANNOT use localhost, since the app is running on your phone/simulator.
+You can find the api request url at src/service/soupKitchenService.ts. There is a hardcoded url including a unique IP address stored in a variable. You will have to change it to your own computer's IPv4 address to make requests to the running backend. You CANNOT use localhost, since the app is running on your phone/simulator.
 
 You can find your IP address by following instructions here: https://www.avg.com/en/signal/find-ip-address
 
@@ -72,4 +72,17 @@ If you are on Mac and wifi, run this in terminal: `ipconfig getifaddr en0`
 Otherwise run `ipconfig getifaddr en1`
 Windows: Run `ipconfig /all`
 
-Once you have modified ipAddress to your own, the backend should receive a request correctly, and location list items should appear on the second screen.
+Make sure to append to the end of your url :8000.
+Ex: const url = "http://192.168.1.5:8000";
+
+If you are interested in an alternative have a look here: https://ngrok.com/
+
+Steps to use ngrok:
+
+```
+npx ngrok http http://localhost:8000
+copy https url next to fowarding
+paste in the url mentioned above but this time make sure to exclude the port. The ngrok url includes it already
+```
+
+Once you have modified url to your own, the backend should receive a request correctly, and location list items should appear on the second screen.
