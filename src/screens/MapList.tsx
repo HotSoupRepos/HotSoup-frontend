@@ -7,7 +7,7 @@ export default function MapList() {
   const [locations, setLocations] = useState([]);
 
   // This address is unique to your computer, please modify ipAddress accordingly. Instructions are in README.
-  const ipAddress = "192.168.1.224";
+  const ipAddress = "192.168.1.84";
 
   useEffect(() => {
     fetch(`http://${ipAddress}:8000/locations`, {
