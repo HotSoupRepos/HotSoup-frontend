@@ -5,10 +5,10 @@ import { Feather } from "@expo/vector-icons";
 interface SearchBarProps {
     searchText: string,
     onSearchChange: (query: string) => void,
-    onSearchSubmit: () => void,
+    // onSearchSubmit: () => void,
 }
 
-function SearchBar ({ searchText, onSearchChange, onSearchSubmit}: SearchBarProps) {
+function SearchBar ({ searchText, onSearchChange}: SearchBarProps) {
   return (
     <View style={styles.searchContainer}>
       <View style={styles.searchBox}>
@@ -23,14 +23,13 @@ function SearchBar ({ searchText, onSearchChange, onSearchSubmit}: SearchBarProp
             onChangeText={onSearchChange}
         />
       </View>
-      <View style={styles.btnContainer}> 
+      {/* <View style={styles.btnContainer}> 
         <Pressable
               onPress={onSearchSubmit}
           >
               <Text style={styles.text}>Search</Text>
           </Pressable>
-      </View>
-        
+      </View> */}
     </View>
   );
 };
@@ -56,21 +55,21 @@ const styles = StyleSheet.create({
     color: 'white',
     padding: 15
   },
-  btnContainer: {
-    marginTop: 20,
-    paddingVertical: 10,
-    borderWidth: 5,
-    borderColor: "#ffc40c",
-    borderRadius: 8,
-    backgroundColor: "transparent",
-    height: 60
-  },
-  text: {
-    fontSize: 25,
-    fontWeight: 'bold',
-    textAlign: "center",
-    color: "#F0EEEE",
-    }
+  // btnContainer: {
+  //   marginTop: 20,
+  //   paddingVertical: 10,
+  //   borderWidth: 5,
+  //   borderColor: "#ffc40c",
+  //   borderRadius: 8,
+  //   backgroundColor: "transparent",
+  //   height: 60
+  // },
+  // text: {
+  //   fontSize: 25,
+  //   fontWeight: 'bold',
+  //   textAlign: "center",
+  //   color: "#F0EEEE",
+  //   }
 });
 
 export default SearchBar;
