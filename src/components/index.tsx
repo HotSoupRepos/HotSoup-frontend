@@ -1,2 +1,3 @@
 import LocationList from "./LocationList";
-export { LocationList };
+import ListItem from "./ListItem";
+export { LocationList, ListItem };

@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import { SoupKitchenModel } from "@store";
+import ListItem from './ListItem'
 
 interface LocationListProps {
   locations: SoupKitchenModel[];

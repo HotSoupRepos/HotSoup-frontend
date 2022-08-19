@@ -2,7 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import React, { useCallback } from "react";
 import { StyleSheet, View, ActivityIndicator, Text } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
-import { LocationList } from "@components";
+import { LocationList, ListItem } from "@components";
 import {
   useAppDispatch,
   getLocationsAsync,
