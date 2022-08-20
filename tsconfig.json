@@ -5,7 +5,6 @@
     "baseUrl": "./src" /* Base directory to resolve non-absolute module names. */,
     "paths": {
       /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
-      "@app/*": ["./*"],
       "@common": ["common"],
       "@config": ["config"],
       "@components": ["components"],
@@ -14,6 +13,7 @@
       "@store": ["store"],
       "@apis": ["apis"],
       "@service": ["service"],
-    }
+      "@theme": ["theme"],
+    },
   }
 }
