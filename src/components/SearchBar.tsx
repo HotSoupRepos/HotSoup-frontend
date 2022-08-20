@@ -1,6 +1,5 @@
-import React from "react";
-import { View, TextInput, StyleSheet, Pressable, Text } from "react-native";
 import { Feather } from "@expo/vector-icons";
+import { StyleSheet, TextInput, View } from "react-native";
 
 interface SearchBarProps {
   searchText: string;

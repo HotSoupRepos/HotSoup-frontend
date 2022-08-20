@@ -1,17 +1,16 @@
-import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
-import {
-  StyleSheet,
-  View,
-  ActivityIndicator,
-  Text,
-  Pressable,
-} from "react-native";
 import { LocationList } from "@components";
-import { useAppSelector, selectLocations } from "@store";
 import { Feather, MaterialIcons } from "@expo/vector-icons";
+import { selectLocations, useAppSelector } from "@store";
+import { StatusBar } from "expo-status-bar";
+import { useState } from "react";
+import {
+  ActivityIndicator,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import SearchBar from "../components/SearchBar";
-import autoMergeLevel1 from "redux-persist/es/stateReconciler/autoMergeLevel1";
 
 export default function MapList() {
   const { loading, locations, error } = useAppSelector(selectLocations);
@@ -31,22 +30,25 @@ export default function MapList() {
 
   return (
     <View style={styles.container}>
-      <View>
-        <View style={styles.searchBox}>
-          <View style={styles.searchInputContainer}>
-            <SearchBar
-              searchText={searchText}
-              onSearchChange={(newSearchText) => setSearchText(newSearchText)}
-            />
-          </View>
-
-          <Pressable style={styles.searchBtn} onPress={onSearchSubmit}>
-            <Feather name="search" style={styles.icon} />
-          </Pressable>
-          <Pressable style={styles.locationBtn} onPress={() => {}}>
-            <MaterialIcons name="my-location" size={25} color="black" />
-          </Pressable>
+      <View></View>
+      <View style={styles.searchBox}>
+        <View style={styles.searchInputContainer}>
+          <SearchBar
+            searchText={searchText}
+            onSearchChange={(newSearchText) => setSearchText(newSearchText)}
+          />
         </View>
+
+        <Pressable style={styles.searchBtn} onPress={onSearchSubmit}>
+          <Feather name="search" style={styles.icon} />
+        </Pressable>
+        <Pressable style={styles.locationBtn} onPress={() => {}}>
+          <MaterialIcons
+            style={styles.iconLocation}
+            name="my-location"
+            size={25}
+          />
+        </Pressable>
       </View>
 
       {error && <Text>{error}</Text>}
@@ -59,7 +61,7 @@ export default function MapList() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "rgba(0,0,0)",
+    backgroundColor: "#000",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -67,12 +69,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     borderColor: "red",
     borderWidth: 3,
-    gap: 2,
-    flex: 1,
-    justifyContent: "space-around",
+    paddingVertical: 18,
   },
   searchInputContainer: {
-    flex: 2,
+    flex: 3.5,
   },
   searchBtn: {
     backgroundColor: "#ffc40c",
@@ -80,24 +80,30 @@ const styles = StyleSheet.create({
     height: 60,
     marginTop: 16,
     marginBottom: 10,
+    marginHorizontal: 10,
     flex: 0.5,
   },
   icon: {
     fontSize: 25,
     alignSelf: "center",
     color: "black",
-    padding: 10,
+    paddingVertical: 15,
+    paddingHorizontal: 5,
   },
   locationBtn: {
-    backgroundColor: "#ffc40c",
+    backgroundColor: "transparent",
     borderRadius: 8,
     height: 60,
     marginTop: 16,
     marginBottom: 10,
+    borderColor: "#ffc40c",
+    borderWidth: 2,
     flex: 0.5,
+    marginHorizontal: 5,
   },
   iconLocation: {
-    alignItems: "center",
-    padding: 10,
+    paddingVertical: 15,
+    paddingHorizontal: 10,
+    color: "#ffc40c",
   },
 });

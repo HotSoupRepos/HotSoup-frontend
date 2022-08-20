@@ -1,8 +1,9 @@
-import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
-import { StyleSheet, Text, View, Pressable } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { StatusBar } from "expo-status-bar";
+import { useState } from "react";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import SearchBar from "../components/SearchBar";
+import SearchButton from "../components/SearchButton";
 
 type Nav = {
   navigate: (value: string) => void;
@@ -34,11 +35,7 @@ export default function Home() {
         searchText={searchText}
         onSearchChange={(newSearchText) => setSearchText(newSearchText)}
       />
-      <View style={styles.btnContainerSearch}>
-        <Pressable onPress={onSearchSubmit}>
-          <Text style={styles.textSearch}>Search</Text>
-        </Pressable>
-      </View>
+      <SearchButton onSearchSubmit={onSearchSubmit} />
       <StatusBar style="auto" />
     </View>
   );
@@ -73,21 +70,5 @@ const styles = StyleSheet.create({
   text: {
     padding: 50,
     fontSize: 20,
-  },
-  btnContainerSearch: {
-    marginTop: 20,
-    paddingVertical: 10,
-    borderWidth: 5,
-    borderColor: "#ffc40c",
-    borderRadius: 8,
-    backgroundColor: "transparent",
-    height: 60,
-    width: 300,
-  },
-  textSearch: {
-    fontSize: 25,
-    fontWeight: "bold",
-    textAlign: "center",
-    color: "#F0EEEE",
   },
 });
