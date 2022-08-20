@@ -34,7 +34,7 @@ export default function ListItem({ locationName }: props) {
 const styles = StyleSheet.create({
   listContainer: {
     width: "100%",
-    height: "10%",
+    height: 'auto',
     marginBottom: "0.5%",
     backgroundColor: "#232323",
     flexDirection: "row",

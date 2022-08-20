@@ -1,3 +1,3 @@
 import LocationList from "./LocationList";
-import ListItem from "./ListItem";
-export { LocationList, ListItem };
+import MapWidget from "./MapWidget";
+export { LocationList, MapWidget };
