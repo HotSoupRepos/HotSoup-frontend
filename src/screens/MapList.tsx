@@ -1,3 +1,5 @@
+import MapListSearchButton from "../components/MapListSearchButton";
+import MapListLocationButton from "../components/MapListLocationButton";
 import { LocationList } from "@components";
 import { Feather, MaterialIcons } from "@expo/vector-icons";
 import { selectLocations, useAppSelector } from "@store";
@@ -21,6 +23,10 @@ export default function MapList() {
     alert(searchText);
   };
 
+  const onLocationSubmit = () => {
+    alert("Submitting Location");
+  };
+
   if (loading)
     return (
       <View style={styles.container}>
@@ -38,17 +44,8 @@ export default function MapList() {
             onSearchChange={(newSearchText) => setSearchText(newSearchText)}
           />
         </View>
-
-        <Pressable style={styles.searchBtn} onPress={onSearchSubmit}>
-          <Feather name="search" style={styles.icon} />
-        </Pressable>
-        <Pressable style={styles.locationBtn} onPress={() => {}}>
-          <MaterialIcons
-            style={styles.iconLocation}
-            name="my-location"
-            size={25}
-          />
-        </Pressable>
+        <MapListSearchButton onSearchSubmit={onSearchSubmit} />
+        <MapListLocationButton onLocationSubmit={onLocationSubmit} />
       </View>
 
       {error && <Text>{error}</Text>}
@@ -67,43 +64,9 @@ const styles = StyleSheet.create({
   },
   searchBox: {
     flexDirection: "row",
-    borderColor: "red",
-    borderWidth: 3,
     paddingVertical: 18,
   },
   searchInputContainer: {
     flex: 3.5,
-  },
-  searchBtn: {
-    backgroundColor: "#ffc40c",
-    borderRadius: 8,
-    height: 60,
-    marginTop: 16,
-    marginBottom: 10,
-    marginHorizontal: 10,
-    flex: 0.5,
-  },
-  icon: {
-    fontSize: 25,
-    alignSelf: "center",
-    color: "black",
-    paddingVertical: 15,
-    paddingHorizontal: 5,
-  },
-  locationBtn: {
-    backgroundColor: "transparent",
-    borderRadius: 8,
-    height: 60,
-    marginTop: 16,
-    marginBottom: 10,
-    borderColor: "#ffc40c",
-    borderWidth: 2,
-    flex: 0.5,
-    marginHorizontal: 5,
-  },
-  iconLocation: {
-    paddingVertical: 15,
-    paddingHorizontal: 10,
-    color: "#ffc40c",
   },
 });

@@ -1,7 +1,7 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
 interface SearchButtonProps {
-  onSearchSubmit: (query: string) => void;
+  onSearchSubmit: () => void;
 }
 
 function SearchButton({ onSearchSubmit }: SearchButtonProps) {

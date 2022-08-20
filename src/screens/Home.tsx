@@ -3,7 +3,7 @@ import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import SearchBar from "../components/SearchBar";
-import SearchButton from "../components/SearchButton";
+import HomePageSearchButton from "../components/HomePageSearchButton";
 
 type Nav = {
   navigate: (value: string) => void;
@@ -35,7 +35,7 @@ export default function Home() {
         searchText={searchText}
         onSearchChange={(newSearchText) => setSearchText(newSearchText)}
       />
-      <SearchButton onSearchSubmit={onSearchSubmit} />
+      <HomePageSearchButton onSearchSubmit={onSearchSubmit} />
       <StatusBar style="auto" />
     </View>
   );
