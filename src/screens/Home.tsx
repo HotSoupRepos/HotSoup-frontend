@@ -1,9 +1,9 @@
-import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
-import { StyleSheet, Text, View, Pressable } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { StatusBar } from "expo-status-bar";
+import { useState } from "react";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import SearchBar from "../components/SearchBar";
-import { getLocationsAsync, useAppDispatch } from "@store";
+import HomePageSearchButton from "../components/HomePageSearchButton";
 
 type Nav = {
   navigate: (value: string) => void;
@@ -11,13 +11,11 @@ type Nav = {
 
 export default function Home() {
   const [searchText, setSearchText] = useState("");
+
   const navigation = useNavigation<Nav>();
-  const dispatch = useAppDispatch();
 
-  const getLocation = () => {
-    dispatch(getLocationsAsync());
-
-    navigation.navigate("MapList");
+  const onSearchSubmit = () => {
+    alert(searchText);
   };
 
   return (
@@ -25,15 +23,19 @@ export default function Home() {
       <Pressable onPress={() => navigation.navigate("Info")}>
         <Text style={styles.title}>HotSoup</Text>
       </Pressable>
-      <Pressable style={styles.btnContainer} onPress={getLocation}>
+      <Pressable
+        style={styles.btnContainer}
+        onPress={() => navigation.navigate("MapList")}
+      >
         <Text style={styles.btnText}>See Meals Nearby</Text>
       </Pressable>
       <Text style={styles.text}>or</Text>
+
       <SearchBar
         searchText={searchText}
         onSearchChange={(newSearchText) => setSearchText(newSearchText)}
-        onSearchSubmit={() => alert(searchText)}
       />
+      <HomePageSearchButton onSearchSubmit={onSearchSubmit} />
       <StatusBar style="auto" />
     </View>
   );

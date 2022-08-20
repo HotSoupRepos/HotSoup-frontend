@@ -1,39 +1,29 @@
-import React from "react";
-import { View, TextInput, StyleSheet, Pressable, Text } from "react-native";
 import { Feather } from "@expo/vector-icons";
+import { StyleSheet, TextInput, View } from "react-native";
 
 interface SearchBarProps {
-    searchText: string,
-    onSearchChange: (query: string) => void,
-    onSearchSubmit: () => void,
+  searchText: string;
+  onSearchChange: (query: string) => void;
 }
 
-function SearchBar ({ searchText, onSearchChange, onSearchSubmit}: SearchBarProps) {
+function SearchBar({ searchText, onSearchChange }: SearchBarProps) {
   return (
     <View style={styles.searchContainer}>
       <View style={styles.searchBox}>
         <Feather name="search" style={styles.icon} />
-      
+
         <TextInput
-            autoCapitalize="none"
-            autoCorrect={false}
-            placeholder="Search Zip Code/Address"
-            style={styles.input}
-            value={searchText}
-            onChangeText={onSearchChange}
+          autoCapitalize="none"
+          autoCorrect={false}
+          placeholder="Search Zip Code/Address"
+          style={styles.input}
+          value={searchText}
+          onChangeText={onSearchChange}
         />
       </View>
-      <View style={styles.btnContainer}> 
-        <Pressable
-              onPress={onSearchSubmit}
-          >
-              <Text style={styles.text}>Search</Text>
-          </Pressable>
-      </View>
-        
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   searchContainer: {
@@ -52,9 +42,9 @@ const styles = StyleSheet.create({
   },
   icon: {
     fontSize: 30,
-    alignSelf: 'center',
-    color: 'white',
-    padding: 15
+    alignSelf: "center",
+    color: "white",
+    padding: 15,
   },
   btnContainer: {
     marginTop: 20,
@@ -63,14 +53,14 @@ const styles = StyleSheet.create({
     borderColor: "#ffc40c",
     borderRadius: 8,
     backgroundColor: "transparent",
-    height: 60
+    height: 60,
   },
   text: {
     fontSize: 25,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     textAlign: "center",
     color: "#F0EEEE",
-    }
+  },
 });
 
 export default SearchBar;
