@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, FlatList } from "react-native";
 import { SoupKitchenModel } from "@store";
+import ListItem from "./ListItem";
 
 interface LocationListProps {
   locations: SoupKitchenModel[];
@@ -8,13 +9,12 @@ interface LocationListProps {
 
 export default function LocationList({ locations }: LocationListProps) {
   //TODO - Once ListItem component is finished, refactor this to use FlatList
-  const listItems = locations.map((location) => (
-    <Text key={location["name"]}>{location["address"]}</Text>
+  const listItems = locations.map((location, index) => (
+    <ListItem key={index} locationName={location['name']} />
   ));
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>LocationList</Text>
       {listItems}
       <StatusBar style="auto" />
     </View>
@@ -24,7 +24,7 @@ export default function LocationList({ locations }: LocationListProps) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#000",
     alignItems: "center",
     justifyContent: "center",
   },
