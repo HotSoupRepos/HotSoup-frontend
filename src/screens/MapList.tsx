@@ -9,8 +9,9 @@ import {
 } from "react-native";
 import { LocationList } from "@components";
 import { useAppSelector, selectLocations } from "@store";
-import { Feather } from "@expo/vector-icons";
+import { Feather, MaterialIcons } from "@expo/vector-icons";
 import SearchBar from "../components/SearchBar";
+import autoMergeLevel1 from "redux-persist/es/stateReconciler/autoMergeLevel1";
 
 export default function MapList() {
   const { loading, locations, error } = useAppSelector(selectLocations);
@@ -32,16 +33,22 @@ export default function MapList() {
     <View style={styles.container}>
       <View>
         <View style={styles.searchBox}>
-          <SearchBar
-            searchText={searchText}
-            onSearchChange={(newSearchText) => setSearchText(newSearchText)}
-          />
+          <View style={styles.searchInputContainer}>
+            <SearchBar
+              searchText={searchText}
+              onSearchChange={(newSearchText) => setSearchText(newSearchText)}
+            />
+          </View>
 
           <Pressable style={styles.searchBtn} onPress={onSearchSubmit}>
             <Feather name="search" style={styles.icon} />
           </Pressable>
+          <Pressable style={styles.locationBtn} onPress={() => {}}>
+            <MaterialIcons name="my-location" size={25} color="black" />
+          </Pressable>
         </View>
       </View>
+
       {error && <Text>{error}</Text>}
       {!error && <LocationList locations={locations}></LocationList>}
       <StatusBar style="auto" />
@@ -58,20 +65,39 @@ const styles = StyleSheet.create({
   },
   searchBox: {
     flexDirection: "row",
-    gap: 10,
+    borderColor: "red",
+    borderWidth: 3,
+    gap: 2,
+    flex: 1,
+    justifyContent: "space-around",
+  },
+  searchInputContainer: {
+    flex: 2,
   },
   searchBtn: {
     backgroundColor: "#ffc40c",
     borderRadius: 8,
     height: 60,
     marginTop: 16,
-    flexDirection: "row",
     marginBottom: 10,
+    flex: 0.5,
   },
   icon: {
     fontSize: 25,
     alignSelf: "center",
     color: "black",
-    padding: 15,
+    padding: 10,
+  },
+  locationBtn: {
+    backgroundColor: "#ffc40c",
+    borderRadius: 8,
+    height: 60,
+    marginTop: 16,
+    marginBottom: 10,
+    flex: 0.5,
+  },
+  iconLocation: {
+    alignItems: "center",
+    padding: 10,
   },
 });
