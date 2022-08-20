@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, View, ActivityIndicator, Text } from "react-native";
-import { LocationList } from "@components";
+import { LocationList, MapWidget } from "@components";
 import { useAppSelector, selectLocations } from "@store";
 
 export default function MapList() {
@@ -17,6 +17,7 @@ export default function MapList() {
   return (
     <View style={styles.container}>
       {error && <Text>{error}</Text>}
+      {!error && <MapWidget locations={locations}/>}
       {!error && <LocationList locations={locations}></LocationList>}
       <StatusBar style="auto" />
     </View>
