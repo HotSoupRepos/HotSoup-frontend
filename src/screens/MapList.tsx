@@ -1,17 +1,10 @@
-import MapListSearchButton from "../components/MapListSearchButton";
-import MapListLocationButton from "../components/MapListLocationButton";
-import { LocationList } from "@components";
-import { Feather, MaterialIcons } from "@expo/vector-icons";
+import { LocationList, MapWidget } from "@components";
 import { selectLocations, useAppSelector } from "@store";
 import { StatusBar } from "expo-status-bar";
-import { useState } from "react";
-import {
-  ActivityIndicator,
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
+import React, { useState } from "react";
+import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
+import MapListLocationButton from "../components/MapListLocationButton";
+import MapListSearchButton from "../components/MapListSearchButton";
 import SearchBar from "../components/SearchBar";
 
 export default function MapList() {
@@ -49,6 +42,7 @@ export default function MapList() {
       </View>
 
       {error && <Text>{error}</Text>}
+      {!error && <MapWidget locations={locations} />}
       {!error && <LocationList locations={locations}></LocationList>}
       <StatusBar style="auto" />
     </View>
