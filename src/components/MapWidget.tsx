@@ -3,7 +3,8 @@ import {
   StyleSheet,
   Dimensions,
   Text,
-} from "react-native"
+} from "react-native";
+
 import MapView, { Marker, Callout } from "react-native-maps";
 
 
