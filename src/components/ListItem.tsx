@@ -1,10 +1,12 @@
 import React from "react";
-import { View, StyleSheet, Text, Pressable, Image } from "react-native";
+import { View, StyleSheet, Text, Pressable, Dimensions } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 type props = {
   locationName: string,
 };
+
+let {width: screenWidth, height: screenHeight} = Dimensions.get('window')
 
 export default function ListItem({ locationName }: props) {
   const handlePress = () => {
@@ -33,7 +35,7 @@ export default function ListItem({ locationName }: props) {
 
 const styles = StyleSheet.create({
   listContainer: {
-    width: "100%",
+    width: screenWidth,
     height: 'auto',
     marginBottom: "0.5%",
     backgroundColor: "#232323",

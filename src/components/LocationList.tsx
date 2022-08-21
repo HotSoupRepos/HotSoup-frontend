@@ -9,13 +9,15 @@ interface LocationListProps {
 
 export default function LocationList({ locations }: LocationListProps) {
   //TODO - Once ListItem component is finished, refactor this to use FlatList
-  const listItems = locations.map((location, index) => (
-    <ListItem key={index} locationName={location['name']} />
-  ));
+  const listItems = item => {
+    return (
+      <ListItem locationName={item.item['name']} />
+    )
+  }
 
   return (
     <View style={styles.container}>
-      {listItems}
+      <FlatList data={locations} renderItem={listItems} />
       <StatusBar style="auto" />
     </View>
   );
