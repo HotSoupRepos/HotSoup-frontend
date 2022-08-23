@@ -2,8 +2,8 @@ import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import SearchBar from "../components/SearchBar";
 import HomePageSearchButton from "../components/HomePageSearchButton";
+import SearchBar from "../components/SearchBar";
 
 type Nav = {
   navigate: (value: string) => void;
@@ -14,7 +14,7 @@ export default function Home() {
 
   const navigation = useNavigation<Nav>();
 
-  const onSearchSubmit = () => {
+  const handleSubmit = () => {
     alert(searchText);
   };
 
@@ -35,7 +35,10 @@ export default function Home() {
         searchText={searchText}
         onSearchChange={(newSearchText) => setSearchText(newSearchText)}
       />
-      <HomePageSearchButton onSearchSubmit={onSearchSubmit} />
+      <HomePageSearchButton
+        searchText={searchText}
+        onSearchSubmit={handleSubmit}
+      />
       <StatusBar style="auto" />
     </View>
   );

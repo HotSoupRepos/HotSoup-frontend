@@ -22,7 +22,7 @@ HotSoup has 3 pages
 
 - **Landing Page** contains a "search near me" button for user to search for local soup kitchens by their location and an input field to allow them to input their address - can be done by city, zipcode, or entire address - these search params query the database and then automatically send the user to the results page showing the
 
-- **Search Result Page** contains the integrated map API with the search results list, which contains the pop-up button that allows the user to see more inforamtion per search result
+- **Search Result Page** contains the integrated map API with the search results list, which contains the pop-up button that allows the user to see more information per search result
 
 - **About Page** contains all the info about the app, as well as more information about the project itself, which covers the group of volunteers that have put the app together.
 

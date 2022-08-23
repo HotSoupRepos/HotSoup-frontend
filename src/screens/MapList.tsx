@@ -37,7 +37,10 @@ export default function MapList() {
             onSearchChange={(newSearchText) => setSearchText(newSearchText)}
           />
         </View>
-        <MapListSearchButton onSearchSubmit={onSearchSubmit} />
+        <MapListSearchButton
+          searchText={searchText}
+          onSearchSubmit={onSearchSubmit}
+        />
         <MapListLocationButton onLocationSubmit={onLocationSubmit} />
       </View>
 

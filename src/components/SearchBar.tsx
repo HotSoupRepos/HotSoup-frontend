@@ -1,24 +1,79 @@
+import React, { useEffect, useRef } from "react";
+import {
+  FlatList,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+  ViewStyle,
+} from "react-native";
 import { Feather } from "@expo/vector-icons";
-import { StyleSheet, TextInput, View } from "react-native";
+
+import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 
 interface SearchBarProps {
   searchText: string;
   onSearchChange: (query: string) => void;
 }
 
-function SearchBar({ searchText, onSearchChange }: SearchBarProps) {
+export default function SearchBarGoogle({
+  searchText,
+  onSearchChange,
+}: SearchBarProps) {
   return (
     <View style={styles.searchContainer}>
       <View style={styles.searchBox}>
         <Feather name="search" style={styles.icon} />
 
-        <TextInput
-          autoCapitalize="none"
-          autoCorrect={false}
+        <GooglePlacesAutocomplete
           placeholder="Search Zip Code/Address"
-          style={styles.input}
-          value={searchText}
-          onChangeText={onSearchChange}
+          minLength={2}
+          autoFocus={false}
+          returnKeyType={"search"}
+          listViewDisplayed="auto"
+          fetchDetails={true}
+          renderDescription={(row) => row.description}
+          styles={{
+            textInputContainer: {
+              width: "100%",
+            },
+            textInput: {
+              color: "#5d5d5d",
+              fontSize: 16,
+              backgroundColor: "transparent",
+              marginTop: 8,
+            },
+            predefinedPlacesDescription: {
+              color: "#1faadb",
+            },
+            description: {
+              fontWeight: "bold",
+            },
+          }}
+          onPress={(data, details = null) => {
+            console.log("data", data);
+            console.log("details", details);
+          }}
+          getDefaultValue={() => {
+            return "";
+          }}
+          query={{
+            key: "AIzaSyDgkaiAzHRjvkeDYw4lzJC4jXAUETmc6pU",
+            language: "en",
+            types: "establishment",
+          }}
+          currentLocationLabel="Current location"
+          nearbyPlacesAPI="GooglePlacesSearch"
+          GoogleReverseGeocodingQuery={{}}
+          GooglePlacesSearchQuery={{
+            rankby: "distance",
+            type: "meal_takeaway",
+          }}
+          GooglePlacesDetailsQuery={{
+            fields: "formatted_address",
+          }}
+          debounce={200}
         />
       </View>
     </View>
@@ -46,21 +101,4 @@ const styles = StyleSheet.create({
     color: "white",
     padding: 15,
   },
-  btnContainer: {
-    marginTop: 20,
-    paddingVertical: 10,
-    borderWidth: 5,
-    borderColor: "#ffc40c",
-    borderRadius: 8,
-    backgroundColor: "transparent",
-    height: 60,
-  },
-  text: {
-    fontSize: 25,
-    fontWeight: "bold",
-    textAlign: "center",
-    color: "#F0EEEE",
-  },
 });
-
-export default SearchBar;
