@@ -1,14 +1,6 @@
-import React, { useEffect, useRef } from "react";
-import {
-  FlatList,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-  ViewStyle,
-} from "react-native";
 import { Feather } from "@expo/vector-icons";
+import React from "react";
+import { StyleSheet, View } from "react-native";
 
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 
@@ -17,7 +9,7 @@ interface SearchBarProps {
   onSearchChange: (query: string) => void;
 }
 
-export default function SearchBarGoogle({
+export default function SearchBar({
   searchText,
   onSearchChange,
 }: SearchBarProps) {
@@ -59,7 +51,7 @@ export default function SearchBarGoogle({
             return "";
           }}
           query={{
-            key: "AIzaSyDgkaiAzHRjvkeDYw4lzJC4jXAUETmc6pU",
+            key: "YOUR_API_KEY",
             language: "en",
             types: "establishment",
           }}
