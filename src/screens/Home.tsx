@@ -18,6 +18,10 @@ export default function Home() {
     alert(searchText);
   };
 
+  const handleSearchChange = (newSearchText: string) => {
+    setSearchText(newSearchText.replace(/[^0-9]/g, ""));
+  };
+
   return (
     <View style={styles.container}>
       <Pressable onPress={() => navigation.navigate("Info")}>
@@ -33,7 +37,7 @@ export default function Home() {
 
       <SearchBar
         searchText={searchText}
-        onSearchChange={(newSearchText) => setSearchText(newSearchText)}
+        onSearchChange={(newSearchText) => handleSearchChange(newSearchText)}
       />
       <HomePageSearchButton
         searchText={searchText}

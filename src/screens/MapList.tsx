@@ -20,6 +20,10 @@ export default function MapList() {
     alert("Submitting Location");
   };
 
+  const handleSearchChange = (newSearchText: string) => {
+    setSearchText(newSearchText.replace(/[^0-9]/g, ""));
+  };
+
   if (loading)
     return (
       <View style={styles.container}>
@@ -34,7 +38,9 @@ export default function MapList() {
         <View style={styles.searchInputContainer}>
           <SearchBar
             searchText={searchText}
-            onSearchChange={(newSearchText) => setSearchText(newSearchText)}
+            onSearchChange={(newSearchText) =>
+              handleSearchChange(newSearchText)
+            }
           />
         </View>
         <MapListSearchButton
