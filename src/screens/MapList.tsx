@@ -1,11 +1,13 @@
 import { LocationList, MapWidget } from "@components";
 import { selectLocations, useAppSelector } from "@store";
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 import MapListLocationButton from "../components/MapListLocationButton";
 import MapListSearchButton from "../components/MapListSearchButton";
 import SearchBar from "../components/SearchBar";
+import * as Location from 'expo-location';
+
 
 export default function MapList() {
   const { loading, locations, error } = useAppSelector(selectLocations);
@@ -26,6 +28,19 @@ export default function MapList() {
         <ActivityIndicator size={50} animating />
       </View>
     );
+
+    useEffect(() => {
+      (async () => {
+        let { status } = await Location.requestForegroundPermissionsAsync();
+        if (status !== 'granted') {
+          console.log('Permission to access location was denied');
+          return;
+        }
+  
+        let location = await Location.getCurrentPositionAsync({});
+        console.log(location);
+      })();
+    }, []);
 
   return (
     <View style={styles.container}>
