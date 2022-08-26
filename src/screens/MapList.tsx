@@ -1,7 +1,7 @@
 import { LocationList, MapWidget } from "@components";
 import { selectLocations, useAppSelector } from "@store";
 import { StatusBar } from "expo-status-bar";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 import MapListLocationButton from "../components/MapListLocationButton";
 import MapListSearchButton from "../components/MapListSearchButton";
