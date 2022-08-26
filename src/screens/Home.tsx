@@ -1,9 +1,11 @@
 import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import SearchBar from "../components/SearchBar";
 import HomePageSearchButton from "../components/HomePageSearchButton";
+import * as Location from 'expo-location';
+
 
 type Nav = {
   navigate: (value: string) => void;
@@ -17,6 +19,20 @@ export default function Home() {
   const onSearchSubmit = () => {
     alert(searchText);
   };
+
+
+  useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== 'granted') {
+        console.log('Permission to access location was denied');
+        return;
+      }
+
+      let location = await Location.getCurrentPositionAsync({});
+      console.log(location);
+    })();
+  }, []);
 
   return (
     <View style={styles.container}>

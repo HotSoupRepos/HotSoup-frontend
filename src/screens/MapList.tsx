@@ -6,7 +6,6 @@ import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 import MapListLocationButton from "../components/MapListLocationButton";
 import MapListSearchButton from "../components/MapListSearchButton";
 import SearchBar from "../components/SearchBar";
-import * as Location from 'expo-location';
 
 
 export default function MapList() {
@@ -28,19 +27,6 @@ export default function MapList() {
         <ActivityIndicator size={50} animating />
       </View>
     );
-
-    useEffect(() => {
-      (async () => {
-        let { status } = await Location.requestForegroundPermissionsAsync();
-        if (status !== 'granted') {
-          console.log('Permission to access location was denied');
-          return;
-        }
-  
-        let location = await Location.getCurrentPositionAsync({});
-        console.log(location);
-      })();
-    }, []);
 
   return (
     <View style={styles.container}>
