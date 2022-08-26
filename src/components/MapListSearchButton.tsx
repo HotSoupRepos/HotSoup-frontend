@@ -2,20 +2,12 @@ import { Feather } from "@expo/vector-icons";
 import { Pressable, StyleSheet } from "react-native";
 
 interface MapListSearchButtonProps {
-  searchText: string;
   onSearchSubmit: () => void;
 }
 
-function MapListSearchButton({
-  searchText,
-  onSearchSubmit,
-}: MapListSearchButtonProps) {
+function MapListSearchButton({ onSearchSubmit }: MapListSearchButtonProps) {
   return (
-    <Pressable
-      disabled={!searchText}
-      style={styles.searchBtn}
-      onPress={onSearchSubmit}
-    >
+    <Pressable style={styles.searchBtn} onPress={onSearchSubmit}>
       <Feather name="search" style={styles.icon} />
     </Pressable>
   );

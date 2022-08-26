@@ -1,21 +1,13 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
 interface HomePageSearchButtonProps {
-  searchText: string;
   onSearchSubmit: () => void;
 }
 
-function HomePageSearchButton({
-  searchText,
-  onSearchSubmit,
-}: HomePageSearchButtonProps) {
+function HomePageSearchButton({ onSearchSubmit }: HomePageSearchButtonProps) {
   return (
     <View>
-      <Pressable
-        disabled={!searchText}
-        style={styles.btnContainerSearch}
-        onPress={onSearchSubmit}
-      >
+      <Pressable style={styles.btnContainerSearch} onPress={onSearchSubmit}>
         <Text style={styles.textSearch}>Search</Text>
       </Pressable>
     </View>

@@ -1,15 +1,17 @@
 import { Feather } from "@expo/vector-icons";
 import React from "react";
-import { StyleSheet, TextInput, View } from "react-native";
+import { StyleSheet, Text, TextInput, View } from "react-native";
 
 interface SearchBarProps {
   searchText: string;
   onSearchChange: (query: string) => void;
+  validText: boolean;
 }
 
 export default function SearchBar({
   searchText,
   onSearchChange,
+  validText,
 }: SearchBarProps) {
   return (
     <View style={styles.searchContainer}>
@@ -23,9 +25,14 @@ export default function SearchBar({
           style={styles.input}
           value={searchText}
           keyboardType="numeric"
-          maxLength={9}
+          maxLength={10}
           onChangeText={onSearchChange}
         />
+      </View>
+      <View>
+        {!validText ? (
+          <Text style={styles.errorMessage}>Please enter a valid ZipCode!</Text>
+        ) : null}
       </View>
     </View>
   );
@@ -51,5 +58,10 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     color: "white",
     padding: 15,
+  },
+  errorMessage: {
+    margin: 8,
+    fontSize: 20,
+    color: "red",
   },
 });

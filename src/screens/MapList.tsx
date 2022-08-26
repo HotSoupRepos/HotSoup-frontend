@@ -11,17 +11,32 @@ export default function MapList() {
   const { loading, locations, error } = useAppSelector(selectLocations);
 
   const [searchText, setSearchText] = useState("");
-
-  const onSearchSubmit = () => {
-    alert(searchText);
-  };
+  const [isValid, setIsValid] = useState(true);
 
   const onLocationSubmit = () => {
     alert("Submitting Location");
   };
+  const handleSearchSubmit = () => {
+    if (!searchText.trim() || !checkValid(searchText)) {
+      setIsValid(false);
+    } else {
+      if (checkValid(searchText)) {
+        alert(`ZipCode ${searchText} is valid!`);
+      }
+      setIsValid(true);
+      setSearchText("");
+    }
+  };
 
+  // Check if zipcode is valid
+  const checkValid = (searchText: string) => {
+    const validZipCode = /^\d{5}(?:[- ]?\d{4})?$/;
+    return validZipCode.test(searchText);
+  };
+
+  // Restrict users to enter only numbers and dashes
   const handleSearchChange = (newSearchText: string) => {
-    setSearchText(newSearchText.replace(/[^0-9]/g, ""));
+    setSearchText(newSearchText.replace(/[^0-9\-]/g, ""));
   };
 
   if (loading)
@@ -38,15 +53,13 @@ export default function MapList() {
         <View style={styles.searchInputContainer}>
           <SearchBar
             searchText={searchText}
+            validText={isValid}
             onSearchChange={(newSearchText) =>
               handleSearchChange(newSearchText)
             }
           />
         </View>
-        <MapListSearchButton
-          searchText={searchText}
-          onSearchSubmit={onSearchSubmit}
-        />
+        <MapListSearchButton onSearchSubmit={handleSearchSubmit} />
         <MapListLocationButton onLocationSubmit={onLocationSubmit} />
       </View>
 

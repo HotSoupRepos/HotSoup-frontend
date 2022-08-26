@@ -11,15 +11,31 @@ type Nav = {
 
 export default function Home() {
   const [searchText, setSearchText] = useState("");
+  const [isValid, setIsValid] = useState(true);
 
   const navigation = useNavigation<Nav>();
 
-  const handleSubmit = () => {
-    alert(searchText);
+  const handleSearchSubmit = () => {
+    if (!searchText.trim() || !checkValid(searchText)) {
+      setIsValid(false);
+    } else {
+      if (checkValid(searchText)) {
+        alert(`ZipCode ${searchText} is valid!`);
+      }
+      setIsValid(true);
+      setSearchText("");
+    }
   };
 
+  // Check if zipcode is valid
+  const checkValid = (searchText: string) => {
+    const validZipCode = /^\d{5}(?:[- ]?\d{4})?$/;
+    return validZipCode.test(searchText);
+  };
+
+  // Restrict users to enter only numbers and dashes
   const handleSearchChange = (newSearchText: string) => {
-    setSearchText(newSearchText.replace(/[^0-9]/g, ""));
+    setSearchText(newSearchText.replace(/[^0-9\-]/g, ""));
   };
 
   return (
@@ -37,12 +53,10 @@ export default function Home() {
 
       <SearchBar
         searchText={searchText}
+        validText={isValid}
         onSearchChange={(newSearchText) => handleSearchChange(newSearchText)}
       />
-      <HomePageSearchButton
-        searchText={searchText}
-        onSearchSubmit={handleSubmit}
-      />
+      <HomePageSearchButton onSearchSubmit={handleSearchSubmit} />
       <StatusBar style="auto" />
     </View>
   );
