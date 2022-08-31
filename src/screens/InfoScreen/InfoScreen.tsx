@@ -8,10 +8,9 @@ const InfoScreen: React.FC = ({}) => (
       <TextContainer>
         <StyledHeaderText>About HotSoup</StyledHeaderText>
         <StyledText>
-          here is the end of all life as we know it. Now we shall die. AHHHH SCREAAM RUNNNN AHHHHHH. here is the end of all life as we know it. Now we shall die. AHHHH SCREAAM RUNNNN AHHHHHH. here is the end of all life as we know it. Now we shall die. AHHHH SCREAAM RUNNNN AHHHHHH. 
-          {"\n"}{"\n"}here is the end of all life as we know it. Now we shall die. AHHHH SCREAAM RUNNNN AHHHHHH. here is the end of all life as we know it. 
-          {"\n"}{"\n"}Now we shall die. AHHHH SCREAAM RUNNNN AHHHHHH. here is the end of all life as we know it. Now we shall die. AHHHH SCREAAM RUNNNN AHHHHHH. here is the end of all life as we know it. Now we shall die. AHHHH SCREAAM RUNNNN AHHHHHH. here is the end of all life as we know it. Now we shall die. AHHHH SCREAAM RUNNNN AHHHHHH. here is the end of all life as we know it. 
-          {"\n"}{"\n"}Now we shall die. AHHHH SCREAAM RUNNNN AHHHHHH. here is the end of all life as we know it. Now we shall die. AHHHH SCREAAM RUNNNN AHHHHHH. here is the end of all life as we know it. Now we shall die. AHHHH SCREAAM RUNNNN AHHHHHH. here is the end of all life as we know it. Now we shall die. AHHHH SCREAAM RUNNNN AHHHHHH. </StyledText>
+         Here is the hotsoup info. Here is the hotsoup info. Here is the hotsoup info. Here is the hotsoup info. Here is the hotsoup info.
+          {"\n"}{"\n"}Here is the hotsoup info. Here is the hotsoup info. Here is the hotsoup info. Here is the hotsoup info. Here is the hotsoup info.Here is the hotsoup info. Here is the hotsoup info. Here is the hotsoup info. Here is the hotsoup info. Here is the hotsoup info.
+          {"\n"}{"\n"}Here is the hotsoup info. Here is the hotsoup info. Here is the hotsoup info. Here is the hotsoup info. Here is the hotsoup info.Here is the hotsoup info. Here is the hotsoup info. Here is the hotsoup info. Here is the hotsoup info. Here is the hotsoup info. </StyledText>
       </TextContainer>
     </ScrollView>
   </Container>
