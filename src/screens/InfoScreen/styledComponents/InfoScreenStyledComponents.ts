@@ -16,7 +16,7 @@ margin-horizontal: 20px;
 margin-top: 50px;
 padding: 20px;
 border-radius: 5px;
-backgroundColor: ${(props) => props.theme.customColors.background.secondary};
+background-color: ${(props) => props.theme.customColors.background.secondary};
 `
 
 export const StyledHeaderText = styled.Text`
