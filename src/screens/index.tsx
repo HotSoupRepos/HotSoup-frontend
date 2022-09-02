@@ -1,5 +1,5 @@
 import Home from "./Home";
 import MapList from "./MapList";
-import Info from "./InfoScreen/InfoScreen";
+import InfoScreen from "./InfoScreen/InfoScreen"
 
-export { Home, MapList, Info };
+export { Home, MapList, InfoScreen };

@@ -2,8 +2,9 @@ import * as React from 'react';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Container, TextContainer, StyledHeaderText, StyledText } from './styledComponents/InfoScreenStyledComponents';
 
-const InfoScreen: React.FC = ({}) => (
-  <Container>
+export default function InfoScreen() {
+  return (
+    <Container>
     <ScrollView>
       <TextContainer>
         <StyledHeaderText>About HotSoup</StyledHeaderText>
@@ -14,7 +15,6 @@ const InfoScreen: React.FC = ({}) => (
       </TextContainer>
     </ScrollView>
   </Container>
-)
-
-export default InfoScreen
+  )
+}
   
