@@ -14,4 +14,4 @@ export const fonts: IFonts = {
   AvenirRoman: "AvenirRoman",
 };
 
-export const fontSizes: IFontSizes = ["14px", "18px", "20px", "24px", "48px"];
+export const fontSizes: IFontSizes = ["14px", "18px", "20px", "24px", "36px", "48px"];
