@@ -7,7 +7,11 @@ interface MapListSearchButtonProps {
 
 function MapListSearchButton({ onSearchSubmit }: MapListSearchButtonProps) {
   return (
-    <Pressable style={styles.searchBtn} onPress={onSearchSubmit}>
+    <Pressable
+      style={styles.searchBtn}
+      onPress={onSearchSubmit}
+      testID="Search.Pressable"
+    >
       <Feather name="search" style={styles.icon} />
     </Pressable>
   );
@@ -21,7 +25,7 @@ const styles = StyleSheet.create({
     marginTop: 16,
     marginBottom: 10,
     marginHorizontal: 10,
-    flex: 0.5,
+    flex: 1,
   },
   icon: {
     fontSize: 25,
