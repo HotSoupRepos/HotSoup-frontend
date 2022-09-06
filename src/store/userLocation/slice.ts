@@ -18,9 +18,9 @@ const userLocationSlice = createSlice({
   initialState,
   reducers: {
     setLocation(state, action: PayloadAction<any>) {
-    //     state.lat = action.payload.latitude
-    //   }
-    console.log('the data is getting here or atleast the dispatch is')
+    const geoData = action.payload;
+
+    console.log('real talk, am I seeing anything?', geoData, geoData.coords)
   },
   },
 });
