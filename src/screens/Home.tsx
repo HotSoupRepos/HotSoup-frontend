@@ -5,6 +5,9 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import SearchBar from "../components/SearchBar";
 import HomePageSearchButton from "../components/HomePageSearchButton";
 import * as Location from 'expo-location';
+// import useDispatch from 'react-redux'
+import { useAppDispatch } from "@store";
+import { setLocation } from '../store/userLocation/slice'
 
 
 type Nav = {
@@ -12,6 +15,13 @@ type Nav = {
 };
 
 export default function Home() {
+
+  const dispatch = useAppDispatch();
+
+  // const onlocationPermission = () => {
+  //   dispatch('SET_LOCATION')
+  // };
+
   const [searchText, setSearchText] = useState("");
 
   const navigation = useNavigation<Nav>();
@@ -19,6 +29,7 @@ export default function Home() {
   const onSearchSubmit = () => {
     alert(searchText);
   };
+
 
 
   useEffect(() => {
@@ -31,6 +42,7 @@ export default function Home() {
 
       let location = await Location.getCurrentPositionAsync({});
       console.log(location);
+      dispatch(setLocation(location))
     })();
   }, []);
 
