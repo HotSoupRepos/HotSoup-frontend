@@ -4,13 +4,17 @@ import { RootState } from "@store";
 
 
 interface userLocationState {
+  coords: {
     readonly lat: string;
     readonly long: string;
+    }
   }
 
 const initialState: userLocationState = {
-  lat: '',
-  long: ''
+  coords: {
+    lat: '',
+    long: ''
+  }
 };
 
 const userLocationSlice = createSlice({
@@ -18,14 +22,12 @@ const userLocationSlice = createSlice({
   initialState,
   reducers: {
     setLocation(state, action: PayloadAction<any>) {
-    const geoData = action.payload;
-
-    console.log('real talk, am I seeing anything?', geoData, geoData.coords)
-  },
+      const geoData = action.payload.coords;
+      state.coords.lat = geoData.latitude;
+      state.coords.long = geoData.longitude;
+    },
   },
 });
 
 export const { setLocation } = userLocationSlice.actions;
 export default userLocationSlice.reducer;
-
-// export const selectLocations = (state: RootState) => state.userLocation;
