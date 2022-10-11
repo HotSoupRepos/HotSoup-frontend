@@ -38,6 +38,11 @@ export default function Home() {
       dispatch(setLocation(location))
     })();
   }, []);
+
+  // remove console log
+  console.log('====================================');
+  console.log(`this is the lat:${userCoords.lat} and the long:${userCoords.long} from local state`);
+  console.log('====================================');
   
   return (
     <View style={styles.container}>
