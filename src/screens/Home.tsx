@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import SearchBar from "../components/SearchBar";
 import HomePageSearchButton from "../components/HomePageSearchButton";
+import { getLocationsAsync, useAppDispatch } from "@store";
 
 type Nav = {
   navigate: (value: string) => void;
@@ -11,8 +12,13 @@ type Nav = {
 
 export default function Home() {
   const [searchText, setSearchText] = useState("");
-
   const navigation = useNavigation<Nav>();
+  const dispatch = useAppDispatch();
+
+  const getLocations = () => {
+    dispatch(getLocationsAsync());
+    navigation.navigate("MapList");
+  }
 
   const onSearchSubmit = () => {
     alert(searchText);
@@ -25,7 +31,7 @@ export default function Home() {
       </Pressable>
       <Pressable
         style={styles.btnContainer}
-        onPress={() => navigation.navigate("MapList")}
+        onPress={getLocations}
       >
         <Text style={styles.btnText}>See Meals Nearby</Text>
       </Pressable>
