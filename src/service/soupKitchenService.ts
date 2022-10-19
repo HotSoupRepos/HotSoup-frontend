@@ -2,7 +2,7 @@ import { Api } from "@apis";
 import { SoupKitchenModel } from "@store";
 
 // This address is unique to your computer, please modify ipAddress accordingly. Instructions are in README.
-const url = "https://986b-108-50-197-203.ngrok.io";
+const url = "http://192.168.1.5:8000";
 
 interface ISoupKitchenService {
   getLocations(): Promise<SoupKitchenModel[]>;
@@ -10,8 +10,8 @@ interface ISoupKitchenService {
 
 interface SoupKitchenServiceResponse {
   [index: string]: any;
-  localsoupkitchens: {
-    connecticut: SoupKitchenModel;
+  soupKitchens: {
+    locations: SoupKitchenModel[];
   };
 }
 

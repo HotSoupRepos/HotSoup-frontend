@@ -1,12 +1,6 @@
-import {
-  View,
-  StyleSheet,
-  Dimensions,
-  Text,
-} from "react-native";
+import { View, StyleSheet, Dimensions, Text } from "react-native";
 
 import MapView, { Marker, Callout } from "react-native-maps";
-
 
 interface Location {
   name: string;
@@ -20,14 +14,14 @@ interface LocationListProps {
   locations: Location[];
 }
 
-
 const MapWidget: React.FC<LocationListProps> = ({ locations }) => {
   return (
     <View style={styles.mapContainer}>
-      <MapView style={styles.map}
+      <MapView
+        style={styles.map}
         initialRegion={{
           latitude: 40.7128,
-          longitude: -74.0060,
+          longitude: -74.006,
           latitudeDelta: 2,
           longitudeDelta: 0.0421,
         }}
@@ -36,11 +30,14 @@ const MapWidget: React.FC<LocationListProps> = ({ locations }) => {
         {locations.map((location, index) => (
           <Marker
             key={index}
-            coordinate={{ latitude: parseFloat(location['lat']), longitude: parseFloat(location['long']) }}
+            coordinate={{
+              latitude: parseFloat(location["lat"]),
+              longitude: parseFloat(location["lng"]),
+            }}
           >
             <Callout>
-              <Text> {location['address']} </Text>
-              <Text> {location['phone']}  </Text>
+              <Text> {location["address"]} </Text>
+              <Text> {location["phone"]} </Text>
             </Callout>
           </Marker>
         ))}
@@ -53,10 +50,10 @@ export default MapWidget;
 
 const styles = StyleSheet.create({
   mapContainer: {
-    height: '35%',
+    height: "35%",
   },
   map: {
-    width: Dimensions.get('window').width,
-    height: '100%',
+    width: Dimensions.get("window").width,
+    height: "100%",
   },
 });

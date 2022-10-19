@@ -25,31 +25,38 @@ const initialState: SoupKitchenState = {
 
 export const getLocationsAsync = createAsyncThunk(
   "soupKitchen/getLocations",
-  async () => new SoupKitchenService(new Api()).getLocations()
+  async () => {
+    return new SoupKitchenService(new Api()).getLocations();
+  }
 );
 
-const soupKitchenSlice = createSlice({
+export const soupKitchensSlice = createSlice({
   name: "soupKitchen",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder
-      .addCase(getLocationsAsync.pending, (state) => {
-        state.loading = true;
-      })
-      .addCase(getLocationsAsync.fulfilled, (state, action) => {
-        state.locations = action.payload;
-        state.error = undefined;
-        state.loading = false;
-      })
-      .addCase(getLocationsAsync.rejected, (state, action) => {
-        const { message } = action.error;
-        state.error = message;
-        state.loading = false;
-      });
+    // builder.addCase(getLocationsAsync.pending, (state) => {
+    //   console.log("state", state);
+    //   state.loading = true;
+    // });
+    builder.addCase(getLocationsAsync.fulfilled, (state, action) => {
+      state.locations = action.payload;
+      state.error = undefined;
+      state.loading = false;
+    });
+    // builder.addCase(getLocationsAsync.rejected, (state, action) => {
+    //   console.log("error", action.error);
+    //   const { message } = action.error;
+    //   state.error = message;
+    //   state.loading = false;
+    // });
   },
 });
 
-export default soupKitchenSlice.reducer;
+export default soupKitchensSlice.reducer;
 
-export const selectLocations = (state: RootState) => state.soupKitchen;
+//dispatch(getLocationsAsync());
+
+export const selectLocations = (state: RootState) => {
+  return state.soupKitchen;
+};
