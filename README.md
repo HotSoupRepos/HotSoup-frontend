@@ -91,4 +91,4 @@ Once you have modified url to your own, the backend should receive a request cor
 
 We are using Jest and @testing-library for unit testing. Run `yarn test` to run the current tests. To see the test coverage of the app(and areas that need attention), run `yarn test --coverage`
 
-When writing new tests, create a `__tests__` folder in the same folder(if there is not one already) as the files you are testing and put the test file in that folder; test files should be named <fileName>.test.<extension> -> Ex: MapWidget.test.tsx
+When writing new tests, create a `__tests__` folder in the same folder(if there is not one already) as the files you are testing and put the test file in that folder; test files should be named `<fileName>.test.<extension>` -> Ex: MapWidget.test.tsx
