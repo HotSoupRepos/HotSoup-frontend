@@ -21,7 +21,9 @@ export default function MapList() {
   const innerFunction = useCallback(() => dispatch(getLocationsAsync()), []);
 
   useEffect(() => {
-    innerFunction();
+    if (locations.length === 0) {
+      innerFunction();
+    }
   }, [innerFunction]);
 
   const onSearchSubmit = () => {
