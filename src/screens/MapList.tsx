@@ -21,7 +21,7 @@ export default function MapList() {
   const innerFunction = useCallback(() => dispatch(getLocationsAsync()), []);
 
   useEffect(() => {
-    if (locations.length === 0) {
+    if (loading || error) {
       innerFunction();
     }
   }, [innerFunction]);
