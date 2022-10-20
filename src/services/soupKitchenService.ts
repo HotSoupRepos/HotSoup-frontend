@@ -2,7 +2,8 @@ import { Api } from "@apis";
 import { SoupKitchenModel } from "@store";
 
 // This address is unique to your computer, please modify ipAddress accordingly. Instructions are in README.
-const url = "http://192.168.1.5:8000";
+const ipAddress = "192.168.1.5";
+const URL = `http://${ipAddress}:8000`;
 
 interface ISoupKitchenService {
   getLocations(): Promise<SoupKitchenModel[]>;
@@ -15,17 +16,18 @@ interface SoupKitchenServiceResponse {
   };
 }
 
-export default class SoupKitchenService implements ISoupKitchenService {
+export class SoupKitchenService implements ISoupKitchenService {
   constructor(private api: Api) {}
 
   getLocations = async (): Promise<SoupKitchenModel[]> => {
     try {
       const responseJson: SoupKitchenServiceResponse = await this.api.get(
-        `${url}`,
+        `${URL}`,
         "locations"
       );
 
-      return await responseJson["connecticut"];
+      const locationKey = "connecticut";
+      return await responseJson[locationKey];
     } catch (error) {
       throw error;
     }

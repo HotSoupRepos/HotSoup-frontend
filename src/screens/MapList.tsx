@@ -8,7 +8,6 @@ import {
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useCallback, useEffect } from "react";
 import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
-import { useDispatch } from "react-redux";
 import MapListLocationButton from "../components/MapListLocationButton";
 import MapListSearchButton from "../components/MapListSearchButton";
 import SearchBar from "../components/SearchBar";

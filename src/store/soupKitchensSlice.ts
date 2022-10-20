@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { Api } from "@apis";
-import { SoupKitchenService } from "@service";
+import { SoupKitchenService } from "@services";
 import { RootState } from "@store";
 
 export interface SoupKitchenModel {
@@ -8,7 +8,7 @@ export interface SoupKitchenModel {
   readonly address: string;
   readonly phone: string;
   readonly lat: string;
-  readonly long: string;
+  readonly lng: string;
 }
 
 interface SoupKitchenState {
@@ -24,39 +24,35 @@ const initialState: SoupKitchenState = {
 };
 
 export const getLocationsAsync = createAsyncThunk(
-  "soupKitchen/getLocations",
+  "soupKitchens/getLocations",
   async () => {
     return new SoupKitchenService(new Api()).getLocations();
   }
 );
 
 export const soupKitchensSlice = createSlice({
-  name: "soupKitchen",
+  name: "soupKitchens",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    // builder.addCase(getLocationsAsync.pending, (state) => {
-    //   console.log("state", state);
-    //   state.loading = true;
-    // });
+    builder.addCase(getLocationsAsync.pending, (state) => {
+      state.loading = true;
+    });
     builder.addCase(getLocationsAsync.fulfilled, (state, action) => {
       state.locations = action.payload;
       state.error = undefined;
       state.loading = false;
     });
-    // builder.addCase(getLocationsAsync.rejected, (state, action) => {
-    //   console.log("error", action.error);
-    //   const { message } = action.error;
-    //   state.error = message;
-    //   state.loading = false;
-    // });
+    builder.addCase(getLocationsAsync.rejected, (state, action) => {
+      const { message } = action.error;
+      state.error = message;
+      state.loading = false;
+    });
   },
 });
 
 export default soupKitchensSlice.reducer;
 
-//dispatch(getLocationsAsync());
-
 export const selectLocations = (state: RootState) => {
-  return state.soupKitchen;
+  return state.soupKitchens;
 };

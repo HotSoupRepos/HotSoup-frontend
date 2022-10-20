@@ -72,8 +72,8 @@ If you are on Mac and wifi, run this in terminal: `ipconfig getifaddr en0`
 Otherwise run `ipconfig getifaddr en1`
 Windows: Run `ipconfig /all`
 
-Make sure to append to the end of your url :8000.
-Ex: const url = "http://192.168.1.5:8000";
+In soupKitchenService.ts, change the value of ipAddress to the ipV4 you got from the above commands.
+Ex: const ipAddress = "<YOUR_IP_ADDRESS>"
 
 If you are interested in an alternative have a look here: https://ngrok.com/
 
@@ -86,3 +86,9 @@ paste in the url mentioned above but this time make sure to exclude the port. Th
 ```
 
 Once you have modified url to your own, the backend should receive a request correctly, and location list items should appear on the second screen.
+
+## Testing
+
+We are using Jest and @testing-library for unit testing. Run `yarn test` to run the current tests. To see the test coverage of the app(and areas that need attention), run `yarn test --coverage`
+
+When writing new tests, create a `__tests__` folder in the same folder(if there is not one already) as the files you are testing and put the test file in that folder; test files should be named <fileName>.test.<extension> -> Ex: MapWidget.test.tsx

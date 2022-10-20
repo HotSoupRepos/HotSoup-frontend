@@ -7,24 +7,26 @@ interface Location {
   address: string;
   phone: string;
   lat: string;
-  long: string;
+  lng: string;
 }
 
 interface LocationListProps {
   locations: Location[];
 }
 
+const initialRegionParams = {
+  latitude: 41.1828,
+  longitude: -73.218,
+  latitudeDelta: 0.02,
+  longitudeDelta: 0.0421,
+};
+
 const MapWidget: React.FC<LocationListProps> = ({ locations }) => {
   return (
     <View style={styles.mapContainer}>
       <MapView
         style={styles.map}
-        initialRegion={{
-          latitude: 40.7128,
-          longitude: -74.006,
-          latitudeDelta: 2,
-          longitudeDelta: 0.0421,
-        }}
+        initialRegion={initialRegionParams}
         provider="google"
       >
         {locations.map((location, index) => (

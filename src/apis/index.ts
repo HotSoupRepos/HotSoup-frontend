@@ -17,6 +17,7 @@ export class Api implements IApi {
 
       return await response.json();
     } catch (error) {
+      console.log("API ERROR: ", error);
       throw Error(`${error}`);
     }
   };

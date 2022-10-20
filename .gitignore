@@ -12,6 +12,8 @@ web-build/
 *.npm-global
 .env
 
+coverage
+
 # macOS
 .DS_Store
 node_modules

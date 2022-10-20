@@ -11,7 +11,7 @@ import {
 } from "redux-persist";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import soupKitchenReducer from "./soupKitchen/slice";
+import soupKitchenReducer from "./soupKitchensSlice";
 
 const persistConfig = {
   key: "root",
@@ -21,7 +21,7 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-  soupKitchen: persistReducer(persistConfig, soupKitchenReducer),
+  soupKitchens: persistReducer(persistConfig, soupKitchenReducer),
 });
 
 export const store = configureStore({
