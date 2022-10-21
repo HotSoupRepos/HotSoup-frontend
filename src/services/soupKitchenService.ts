@@ -2,7 +2,8 @@ import { Api } from "@apis";
 import { SoupKitchenModel } from "@store";
 
 // This address is unique to your computer, please modify ipAddress accordingly. Instructions are in README.
-const url = "https://986b-108-50-197-203.ngrok.io";
+const ipAddress = "192.168.1.5";
+const URL = `http://${ipAddress}:8000`;
 
 interface ISoupKitchenService {
   getLocations(): Promise<SoupKitchenModel[]>;
@@ -10,22 +11,23 @@ interface ISoupKitchenService {
 
 interface SoupKitchenServiceResponse {
   [index: string]: any;
-  localsoupkitchens: {
-    connecticut: SoupKitchenModel;
+  soupKitchens: {
+    locations: SoupKitchenModel[];
   };
 }
 
-export default class SoupKitchenService implements ISoupKitchenService {
+export class SoupKitchenService implements ISoupKitchenService {
   constructor(private api: Api) {}
 
   getLocations = async (): Promise<SoupKitchenModel[]> => {
     try {
       const responseJson: SoupKitchenServiceResponse = await this.api.get(
-        `${url}`,
+        `${URL}`,
         "locations"
       );
 
-      return await responseJson["connecticut"];
+      const locationKey = "connecticut";
+      return await responseJson[locationKey];
     } catch (error) {
       throw error;
     }
