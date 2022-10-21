@@ -18,13 +18,12 @@ export default function MapList() {
 
   const [searchText, setSearchText] = useState("");
 
-  const innerFunction = useCallback(() => dispatch(getLocationsAsync()), []);
-
   useEffect(() => {
+    dispatch(getLocationsAsync());
     if (loading || error) {
-      innerFunction();
+      dispatch(getLocationsAsync());
     }
-  }, [innerFunction]);
+  }, []);
 
   const onSearchSubmit = () => {
     alert(searchText);
