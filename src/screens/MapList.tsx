@@ -1,7 +1,12 @@
 import { LocationList, MapWidget } from "@components";
-import { selectLocations, useAppSelector } from "@store";
+import {
+  getLocationsAsync,
+  selectLocations,
+  useAppSelector,
+  useAppDispatch,
+} from "@store";
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 import MapListLocationButton from "../components/MapListLocationButton";
 import MapListSearchButton from "../components/MapListSearchButton";
@@ -9,9 +14,17 @@ import SearchBar from "../components/SearchBar";
 
 
 export default function MapList() {
+  const dispatch = useAppDispatch();
   const { loading, locations, error } = useAppSelector(selectLocations);
 
   const [searchText, setSearchText] = useState("");
+
+  useEffect(() => {
+    dispatch(getLocationsAsync());
+    if (loading || error) {
+      dispatch(getLocationsAsync());
+    }
+  }, []);
 
   const onSearchSubmit = () => {
     alert(searchText);

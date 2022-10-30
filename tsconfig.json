@@ -12,8 +12,8 @@
       "@screens": ["screens"],
       "@store": ["store"],
       "@apis": ["apis"],
-      "@service": ["service"],
-      "@theme": ["theme"],
-    },
+      "@services": ["services"],
+      "@theme": ["theme"]
+    }
   }
 }
