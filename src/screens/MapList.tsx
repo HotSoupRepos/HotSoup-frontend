@@ -12,7 +12,6 @@ import MapListLocationButton from "../components/MapListLocationButton";
 import MapListSearchButton from "../components/MapListSearchButton";
 import SearchBar from "../components/SearchBar";
 
-
 export default function MapList() {
   const dispatch = useAppDispatch();
   const { loading, locations, error } = useAppSelector(selectLocations);
