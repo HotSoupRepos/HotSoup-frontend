@@ -1,8 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "@store";
 
-
-
 interface userLocationState {
   coords: {
     readonly lat: string;
