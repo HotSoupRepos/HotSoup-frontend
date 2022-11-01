@@ -2,14 +2,46 @@ import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import SearchWidget from "../components/SearchWidget/SearchWidget";
+import { useState, useEffect } from "react";
+import * as Location from 'expo-location';
+import { useAppDispatch, useAppSelector } from "@store";
+import { setLocation } from '../store/userLocation/slice'
 
 type Nav = {
   navigate: (value: string) => void;
 };
 
 export default function Home() {
+
+  const dispatch = useAppDispatch();
+  const userCoords = useAppSelector((state) => state.userLocation.coords)
+
+  const [searchText, setSearchText] = useState("");
+
   const navigation = useNavigation<Nav>();
 
+  const onSearchSubmit = () => {
+    alert(searchText);
+  };
+
+  useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== 'granted') {
+        console.log('Permission to access location was denied');
+        return;
+      }
+
+      let location = await Location.getCurrentPositionAsync({});
+      dispatch(setLocation(location))
+    })();
+  }, []);
+
+  // remove console log
+  console.log('====================================');
+  console.log(`this is the lat:${userCoords.lat} and the long:${userCoords.long} from local state`);
+  console.log('====================================');
+  
   return (
     <View style={styles.container}>
       <Pressable onPress={() => navigation.navigate("Info")}>
