@@ -2,7 +2,8 @@ import {
   selectLocations,
   getLocationsAsync,
   type SoupKitchenModel,
-} from "./soupKitchen/slice";
+} from "./soupKitchensSlice";
+
 import {
   store,
   persistor,
