@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   },
   iconLocation: {
     paddingVertical: 15,
-    paddingHorizontal: 10,
+    paddingHorizontal: 12,
     color: "#ffc40c",
   },
 });

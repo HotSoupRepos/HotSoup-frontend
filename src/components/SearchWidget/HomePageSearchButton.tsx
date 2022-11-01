@@ -6,11 +6,13 @@ interface SearchButtonProps {
 
 function SearchButton({ onSearchSubmit }: SearchButtonProps) {
   return (
-    <View style={styles.btnContainerSearch}>
-      <Pressable onPress={onSearchSubmit}>
-        <Text style={styles.textSearch}>Search</Text>
-      </Pressable>
-    </View>
+    <Pressable
+      style={styles.btnContainerSearch}
+      testID="Search.Pressable"
+      onPress={onSearchSubmit}
+    >
+      <Text style={styles.textSearch}>Search</Text>
+    </Pressable>
   );
 }
 
@@ -23,7 +25,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     backgroundColor: "transparent",
     height: 60,
-    width: 300,
+    marginHorizontal: 30,
   },
   textSearch: {
     fontSize: 25,

@@ -1,13 +1,11 @@
 import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
-import { useState, useEffect } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import SearchBar from "../components/SearchBar";
-import HomePageSearchButton from "../components/HomePageSearchButton";
+import SearchWidget from "../components/SearchWidget/SearchWidget";
+import { useState, useEffect } from "react";
 import * as Location from 'expo-location';
 import { useAppDispatch, useAppSelector } from "@store";
 import { setLocation } from '../store/userLocation/slice'
-
 
 type Nav = {
   navigate: (value: string) => void;
@@ -57,11 +55,7 @@ export default function Home() {
       </Pressable>
       <Text style={styles.text}>or</Text>
 
-      <SearchBar
-        searchText={searchText}
-        onSearchChange={(newSearchText) => setSearchText(newSearchText)}
-      />
-      <HomePageSearchButton onSearchSubmit={onSearchSubmit} />
+      <SearchWidget location="Home" />
       <StatusBar style="auto" />
     </View>
   );

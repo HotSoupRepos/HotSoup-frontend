@@ -9,8 +9,7 @@ import { StatusBar } from "expo-status-bar";
 import React, { useState, useCallback, useEffect } from "react";
 import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 import MapListLocationButton from "../components/MapListLocationButton";
-import MapListSearchButton from "../components/MapListSearchButton";
-import SearchBar from "../components/SearchBar";
+import SearchWidget from "../components/SearchWidget/SearchWidget";
 
 export default function MapList() {
   const dispatch = useAppDispatch();
@@ -42,18 +41,10 @@ export default function MapList() {
 
   return (
     <View style={styles.container}>
-      <View></View>
       <View style={styles.searchBox}>
-        <View style={styles.searchInputContainer}>
-          <SearchBar
-            searchText={searchText}
-            onSearchChange={(newSearchText) => setSearchText(newSearchText)}
-          />
-        </View>
-        <MapListSearchButton onSearchSubmit={onSearchSubmit} />
+        <SearchWidget location="MapList" />
         <MapListLocationButton onLocationSubmit={onLocationSubmit} />
       </View>
-
       {error && <Text>{error}</Text>}
       {!error && <MapWidget locations={locations} />}
       {!error && <LocationList locations={locations}></LocationList>}
@@ -74,6 +65,6 @@ const styles = StyleSheet.create({
     paddingVertical: 18,
   },
   searchInputContainer: {
-    flex: 3.5,
+    flex: 5,
   },
 });
